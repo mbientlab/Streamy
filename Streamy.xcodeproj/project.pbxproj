@@ -1,0 +1,714 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9458E9DA279CA3490088B1F5 /* StreamyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9CA279CA3480088B1F5 /* StreamyApp.swift */; };
+		9458E9DB279CA3490088B1F5 /* StreamyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9CA279CA3480088B1F5 /* StreamyApp.swift */; };
+		9458E9DE279CA3490088B1F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9458E9CC279CA3490088B1F5 /* Assets.xcassets */; };
+		9458E9DF279CA3490088B1F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9458E9CC279CA3490088B1F5 /* Assets.xcassets */; };
+		9458E9EA279CA3860088B1F5 /* MetaWear in Frameworks */ = {isa = PBXBuildFile; productRef = 9458E9E9279CA3860088B1F5 /* MetaWear */; };
+		9458E9EC279CA3860088B1F5 /* MetaWearCpp in Frameworks */ = {isa = PBXBuildFile; productRef = 9458E9EB279CA3860088B1F5 /* MetaWearCpp */; };
+		9458E9EE279CA3860088B1F5 /* MetaWearSync in Frameworks */ = {isa = PBXBuildFile; productRef = 9458E9ED279CA3860088B1F5 /* MetaWearSync */; };
+		9458E9F3279CA4540088B1F5 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9F2279CA4540088B1F5 /* MainScene.swift */; };
+		9458E9F4279CA4540088B1F5 /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9F2279CA4540088B1F5 /* MainScene.swift */; };
+		9458E9F7279CA49D0088B1F5 /* MetaWear in Frameworks */ = {isa = PBXBuildFile; productRef = 9458E9F6279CA49D0088B1F5 /* MetaWear */; };
+		9458E9F9279CA49D0088B1F5 /* MetaWearCpp in Frameworks */ = {isa = PBXBuildFile; productRef = 9458E9F8279CA49D0088B1F5 /* MetaWearCpp */; };
+		9458E9FB279CA49D0088B1F5 /* MetaWearSync in Frameworks */ = {isa = PBXBuildFile; productRef = 9458E9FA279CA49D0088B1F5 /* MetaWearSync */; };
+		9458EA13279CA4D70088B1F5 /* DeviceListSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9FD279CA4D70088B1F5 /* DeviceListSidebar.swift */; };
+		9458EA14279CA4D70088B1F5 /* DeviceListSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9FD279CA4D70088B1F5 /* DeviceListSidebar.swift */; };
+		9458EA15279CA4D70088B1F5 /* UnknownDeviceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9FE279CA4D70088B1F5 /* UnknownDeviceViews.swift */; };
+		9458EA16279CA4D70088B1F5 /* UnknownDeviceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9FE279CA4D70088B1F5 /* UnknownDeviceViews.swift */; };
+		9458EA17279CA4D70088B1F5 /* DeviceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9FF279CA4D70088B1F5 /* DeviceListCell.swift */; };
+		9458EA18279CA4D70088B1F5 /* DeviceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9FF279CA4D70088B1F5 /* DeviceListCell.swift */; };
+		9458EA19279CA4D70088B1F5 /* KnownDeviceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA00279CA4D70088B1F5 /* KnownDeviceViews.swift */; };
+		9458EA1A279CA4D70088B1F5 /* KnownDeviceViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA00279CA4D70088B1F5 /* KnownDeviceViews.swift */; };
+		9458EA1B279CA4D70088B1F5 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA01279CA4D70088B1F5 /* Factory.swift */; };
+		9458EA1C279CA4D70088B1F5 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA01279CA4D70088B1F5 /* Factory.swift */; };
+		9458EA1D279CA4D70088B1F5 /* ThreeColumnRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA02279CA4D70088B1F5 /* ThreeColumnRouter.swift */; };
+		9458EA1E279CA4D70088B1F5 /* ThreeColumnRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA02279CA4D70088B1F5 /* ThreeColumnRouter.swift */; };
+		9458EA1F279CA4D70088B1F5 /* NextStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA04279CA4D70088B1F5 /* NextStepsView.swift */; };
+		9458EA20279CA4D70088B1F5 /* NextStepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA04279CA4D70088B1F5 /* NextStepsView.swift */; };
+		9458EA21279CA4D70088B1F5 /* NewSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA05279CA4D70088B1F5 /* NewSessionView.swift */; };
+		9458EA22279CA4D70088B1F5 /* NewSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA05279CA4D70088B1F5 /* NewSessionView.swift */; };
+		9458EA23279CA4D70088B1F5 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA06279CA4D70088B1F5 /* DownloadView.swift */; };
+		9458EA24279CA4D70088B1F5 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA06279CA4D70088B1F5 /* DownloadView.swift */; };
+		9458EA25279CA4D70088B1F5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA08279CA4D70088B1F5 /* Constants.swift */; };
+		9458EA26279CA4D70088B1F5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA08279CA4D70088B1F5 /* Constants.swift */; };
+		9458EA29279CA4D70088B1F5 /* Binding+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA0A279CA4D70088B1F5 /* Binding+.swift */; };
+		9458EA2A279CA4D70088B1F5 /* Binding+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA0A279CA4D70088B1F5 /* Binding+.swift */; };
+		9458EA2D279CA4D70088B1F5 /* Whoops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA0C279CA4D70088B1F5 /* Whoops.swift */; };
+		9458EA2E279CA4D70088B1F5 /* Whoops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA0C279CA4D70088B1F5 /* Whoops.swift */; };
+		9458EA2F279CA4D70088B1F5 /* CTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA0D279CA4D70088B1F5 /* CTAButton.swift */; };
+		9458EA30279CA4D70088B1F5 /* CTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA0D279CA4D70088B1F5 /* CTAButton.swift */; };
+		9458EA31279CA4D70088B1F5 /* ExportIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA0E279CA4D70088B1F5 /* ExportIcon.swift */; };
+		9458EA32279CA4D70088B1F5 /* ExportIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA0E279CA4D70088B1F5 /* ExportIcon.swift */; };
+		9458EA33279CA4D70088B1F5 /* BluetoothStateToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA0F279CA4D70088B1F5 /* BluetoothStateToolbar.swift */; };
+		9458EA34279CA4D70088B1F5 /* BluetoothStateToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA0F279CA4D70088B1F5 /* BluetoothStateToolbar.swift */; };
+		9458EA35279CA4D70088B1F5 /* ScreenTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA10279CA4D70088B1F5 /* ScreenTitle.swift */; };
+		9458EA36279CA4D70088B1F5 /* ScreenTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA10279CA4D70088B1F5 /* ScreenTitle.swift */; };
+		9458EA37279CA4D70088B1F5 /* CircularBusyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA11279CA4D70088B1F5 /* CircularBusyIndicator.swift */; };
+		9458EA38279CA4D70088B1F5 /* CircularBusyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA11279CA4D70088B1F5 /* CircularBusyIndicator.swift */; };
+		9458EA39279CA4D70088B1F5 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA12279CA4D70088B1F5 /* Views.swift */; };
+		9458EA3A279CA4D70088B1F5 /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458EA12279CA4D70088B1F5 /* Views.swift */; };
+		9458EA46279CAC580088B1F5 /* StreamyLogic in Frameworks */ = {isa = PBXBuildFile; productRef = 9458EA45279CAC580088B1F5 /* StreamyLogic */; };
+		9458EA48279CAC5D0088B1F5 /* StreamyLogic in Frameworks */ = {isa = PBXBuildFile; productRef = 9458EA47279CAC5D0088B1F5 /* StreamyLogic */; };
+		9458EA4A279CAC980088B1F5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9458EA49279CAC980088B1F5 /* README.md */; };
+		9458EA4B279CAC980088B1F5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9458EA49279CAC980088B1F5 /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9458E9CA279CA3480088B1F5 /* StreamyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamyApp.swift; sourceTree = "<group>"; };
+		9458E9CC279CA3490088B1F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9458E9D1279CA3490088B1F5 /* Streamy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9458E9D7279CA3490088B1F5 /* Streamy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9458E9D9279CA3490088B1F5 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		9458E9F2279CA4540088B1F5 /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+		9458E9FD279CA4D70088B1F5 /* DeviceListSidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceListSidebar.swift; sourceTree = "<group>"; };
+		9458E9FE279CA4D70088B1F5 /* UnknownDeviceViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnknownDeviceViews.swift; sourceTree = "<group>"; };
+		9458E9FF279CA4D70088B1F5 /* DeviceListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceListCell.swift; sourceTree = "<group>"; };
+		9458EA00279CA4D70088B1F5 /* KnownDeviceViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnownDeviceViews.swift; sourceTree = "<group>"; };
+		9458EA01279CA4D70088B1F5 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		9458EA02279CA4D70088B1F5 /* ThreeColumnRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeColumnRouter.swift; sourceTree = "<group>"; };
+		9458EA04279CA4D70088B1F5 /* NextStepsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextStepsView.swift; sourceTree = "<group>"; };
+		9458EA05279CA4D70088B1F5 /* NewSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSessionView.swift; sourceTree = "<group>"; };
+		9458EA06279CA4D70088B1F5 /* DownloadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		9458EA08279CA4D70088B1F5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9458EA0A279CA4D70088B1F5 /* Binding+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Binding+.swift"; sourceTree = "<group>"; };
+		9458EA0C279CA4D70088B1F5 /* Whoops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Whoops.swift; sourceTree = "<group>"; };
+		9458EA0D279CA4D70088B1F5 /* CTAButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTAButton.swift; sourceTree = "<group>"; };
+		9458EA0E279CA4D70088B1F5 /* ExportIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportIcon.swift; sourceTree = "<group>"; };
+		9458EA0F279CA4D70088B1F5 /* BluetoothStateToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothStateToolbar.swift; sourceTree = "<group>"; };
+		9458EA10279CA4D70088B1F5 /* ScreenTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenTitle.swift; sourceTree = "<group>"; };
+		9458EA11279CA4D70088B1F5 /* CircularBusyIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularBusyIndicator.swift; sourceTree = "<group>"; };
+		9458EA12279CA4D70088B1F5 /* Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		9458EA40279CAAB00088B1F5 /* Streamy (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Streamy (iOS).entitlements"; sourceTree = "<group>"; };
+		9458EA41279CAABB0088B1F5 /* Streamy--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Streamy--iOS--Info.plist"; sourceTree = "<group>"; };
+		9458EA44279CAC430088B1F5 /* StreamyLogic */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StreamyLogic; sourceTree = "<group>"; };
+		9458EA49279CAC980088B1F5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9458E9CE279CA3490088B1F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9458E9EE279CA3860088B1F5 /* MetaWearSync in Frameworks */,
+				9458E9EC279CA3860088B1F5 /* MetaWearCpp in Frameworks */,
+				9458E9EA279CA3860088B1F5 /* MetaWear in Frameworks */,
+				9458EA46279CAC580088B1F5 /* StreamyLogic in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9458E9D4279CA3490088B1F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9458E9FB279CA49D0088B1F5 /* MetaWearSync in Frameworks */,
+				9458E9F9279CA49D0088B1F5 /* MetaWearCpp in Frameworks */,
+				9458E9F7279CA49D0088B1F5 /* MetaWear in Frameworks */,
+				9458EA48279CAC5D0088B1F5 /* StreamyLogic in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9458E9C4279CA3480088B1F5 = {
+			isa = PBXGroup;
+			children = (
+				9458EA49279CAC980088B1F5 /* README.md */,
+				9458EA44279CAC430088B1F5 /* StreamyLogic */,
+				9458E9C9279CA3480088B1F5 /* Shared */,
+				9458EA4C279CACA30088B1F5 /* Support */,
+				9458E9D2279CA3490088B1F5 /* Products */,
+				9458E9F5279CA49D0088B1F5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9458E9C9279CA3480088B1F5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9458E9CA279CA3480088B1F5 /* StreamyApp.swift */,
+				9458E9F2279CA4540088B1F5 /* MainScene.swift */,
+				9458EA01279CA4D70088B1F5 /* Factory.swift */,
+				9458EA12279CA4D70088B1F5 /* Views.swift */,
+				9458EA03279CA4D70088B1F5 /* ForActivities */,
+				9458E9FC279CA4D70088B1F5 /* ForDevices */,
+				9458EA07279CA4D70088B1F5 /* Helpers */,
+				9458E9CC279CA3490088B1F5 /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		9458E9D2279CA3490088B1F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9458E9D1279CA3490088B1F5 /* Streamy.app */,
+				9458E9D7279CA3490088B1F5 /* Streamy.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9458E9D8279CA3490088B1F5 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				9458E9D9279CA3490088B1F5 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		9458E9F5279CA49D0088B1F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9458E9FC279CA4D70088B1F5 /* ForDevices */ = {
+			isa = PBXGroup;
+			children = (
+				9458E9FD279CA4D70088B1F5 /* DeviceListSidebar.swift */,
+				9458E9FE279CA4D70088B1F5 /* UnknownDeviceViews.swift */,
+				9458E9FF279CA4D70088B1F5 /* DeviceListCell.swift */,
+				9458EA00279CA4D70088B1F5 /* KnownDeviceViews.swift */,
+				9458EA0F279CA4D70088B1F5 /* BluetoothStateToolbar.swift */,
+			);
+			path = ForDevices;
+			sourceTree = "<group>";
+		};
+		9458EA03279CA4D70088B1F5 /* ForActivities */ = {
+			isa = PBXGroup;
+			children = (
+				9458EA04279CA4D70088B1F5 /* NextStepsView.swift */,
+				9458EA05279CA4D70088B1F5 /* NewSessionView.swift */,
+				9458EA06279CA4D70088B1F5 /* DownloadView.swift */,
+				9458EA02279CA4D70088B1F5 /* ThreeColumnRouter.swift */,
+			);
+			path = ForActivities;
+			sourceTree = "<group>";
+		};
+		9458EA07279CA4D70088B1F5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9458EA0A279CA4D70088B1F5 /* Binding+.swift */,
+				9458EA11279CA4D70088B1F5 /* CircularBusyIndicator.swift */,
+				9458EA08279CA4D70088B1F5 /* Constants.swift */,
+				9458EA0D279CA4D70088B1F5 /* CTAButton.swift */,
+				9458EA0E279CA4D70088B1F5 /* ExportIcon.swift */,
+				9458EA10279CA4D70088B1F5 /* ScreenTitle.swift */,
+				9458EA0C279CA4D70088B1F5 /* Whoops.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9458EA4C279CACA30088B1F5 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				9458E9D8279CA3490088B1F5 /* macOS */,
+				9458EA41279CAABB0088B1F5 /* Streamy--iOS--Info.plist */,
+				9458EA40279CAAB00088B1F5 /* Streamy (iOS).entitlements */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9458E9D0279CA3490088B1F5 /* Streamy (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9458E9E2279CA3490088B1F5 /* Build configuration list for PBXNativeTarget "Streamy (iOS)" */;
+			buildPhases = (
+				9458E9CD279CA3490088B1F5 /* Sources */,
+				9458E9CE279CA3490088B1F5 /* Frameworks */,
+				9458E9CF279CA3490088B1F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Streamy (iOS)";
+			packageProductDependencies = (
+				9458E9E9279CA3860088B1F5 /* MetaWear */,
+				9458E9EB279CA3860088B1F5 /* MetaWearCpp */,
+				9458E9ED279CA3860088B1F5 /* MetaWearSync */,
+				9458EA45279CAC580088B1F5 /* StreamyLogic */,
+			);
+			productName = "Streamy (iOS)";
+			productReference = 9458E9D1279CA3490088B1F5 /* Streamy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9458E9D6279CA3490088B1F5 /* Streamy (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9458E9E5279CA3490088B1F5 /* Build configuration list for PBXNativeTarget "Streamy (macOS)" */;
+			buildPhases = (
+				9458E9D3279CA3490088B1F5 /* Sources */,
+				9458E9D4279CA3490088B1F5 /* Frameworks */,
+				9458E9D5279CA3490088B1F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Streamy (macOS)";
+			packageProductDependencies = (
+				9458E9F6279CA49D0088B1F5 /* MetaWear */,
+				9458E9F8279CA49D0088B1F5 /* MetaWearCpp */,
+				9458E9FA279CA49D0088B1F5 /* MetaWearSync */,
+				9458EA47279CAC5D0088B1F5 /* StreamyLogic */,
+			);
+			productName = "Streamy (macOS)";
+			productReference = 9458E9D7279CA3490088B1F5 /* Streamy.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9458E9C5279CA3480088B1F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					9458E9D0279CA3490088B1F5 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					9458E9D6279CA3490088B1F5 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 9458E9C8279CA3480088B1F5 /* Build configuration list for PBXProject "Streamy" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9458E9C4279CA3480088B1F5;
+			packageReferences = (
+				9458E9E8279CA3860088B1F5 /* XCRemoteSwiftPackageReference "MetaWear-Swift-Combine-SDK" */,
+			);
+			productRefGroup = 9458E9D2279CA3490088B1F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9458E9D0279CA3490088B1F5 /* Streamy (iOS) */,
+				9458E9D6279CA3490088B1F5 /* Streamy (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9458E9CF279CA3490088B1F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9458EA4A279CAC980088B1F5 /* README.md in Resources */,
+				9458E9DE279CA3490088B1F5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9458E9D5279CA3490088B1F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9458EA4B279CAC980088B1F5 /* README.md in Resources */,
+				9458E9DF279CA3490088B1F5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9458E9CD279CA3490088B1F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9458EA23279CA4D70088B1F5 /* DownloadView.swift in Sources */,
+				9458EA1B279CA4D70088B1F5 /* Factory.swift in Sources */,
+				9458EA2F279CA4D70088B1F5 /* CTAButton.swift in Sources */,
+				9458EA13279CA4D70088B1F5 /* DeviceListSidebar.swift in Sources */,
+				9458EA39279CA4D70088B1F5 /* Views.swift in Sources */,
+				9458EA33279CA4D70088B1F5 /* BluetoothStateToolbar.swift in Sources */,
+				9458EA17279CA4D70088B1F5 /* DeviceListCell.swift in Sources */,
+				9458E9F3279CA4540088B1F5 /* MainScene.swift in Sources */,
+				9458EA29279CA4D70088B1F5 /* Binding+.swift in Sources */,
+				9458EA15279CA4D70088B1F5 /* UnknownDeviceViews.swift in Sources */,
+				9458EA1D279CA4D70088B1F5 /* ThreeColumnRouter.swift in Sources */,
+				9458EA25279CA4D70088B1F5 /* Constants.swift in Sources */,
+				9458E9DA279CA3490088B1F5 /* StreamyApp.swift in Sources */,
+				9458EA19279CA4D70088B1F5 /* KnownDeviceViews.swift in Sources */,
+				9458EA31279CA4D70088B1F5 /* ExportIcon.swift in Sources */,
+				9458EA35279CA4D70088B1F5 /* ScreenTitle.swift in Sources */,
+				9458EA21279CA4D70088B1F5 /* NewSessionView.swift in Sources */,
+				9458EA2D279CA4D70088B1F5 /* Whoops.swift in Sources */,
+				9458EA37279CA4D70088B1F5 /* CircularBusyIndicator.swift in Sources */,
+				9458EA1F279CA4D70088B1F5 /* NextStepsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9458E9D3279CA3490088B1F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9458EA24279CA4D70088B1F5 /* DownloadView.swift in Sources */,
+				9458EA1C279CA4D70088B1F5 /* Factory.swift in Sources */,
+				9458EA30279CA4D70088B1F5 /* CTAButton.swift in Sources */,
+				9458EA14279CA4D70088B1F5 /* DeviceListSidebar.swift in Sources */,
+				9458EA3A279CA4D70088B1F5 /* Views.swift in Sources */,
+				9458EA34279CA4D70088B1F5 /* BluetoothStateToolbar.swift in Sources */,
+				9458EA18279CA4D70088B1F5 /* DeviceListCell.swift in Sources */,
+				9458E9F4279CA4540088B1F5 /* MainScene.swift in Sources */,
+				9458EA2A279CA4D70088B1F5 /* Binding+.swift in Sources */,
+				9458EA16279CA4D70088B1F5 /* UnknownDeviceViews.swift in Sources */,
+				9458EA1E279CA4D70088B1F5 /* ThreeColumnRouter.swift in Sources */,
+				9458EA26279CA4D70088B1F5 /* Constants.swift in Sources */,
+				9458E9DB279CA3490088B1F5 /* StreamyApp.swift in Sources */,
+				9458EA1A279CA4D70088B1F5 /* KnownDeviceViews.swift in Sources */,
+				9458EA32279CA4D70088B1F5 /* ExportIcon.swift in Sources */,
+				9458EA36279CA4D70088B1F5 /* ScreenTitle.swift in Sources */,
+				9458EA22279CA4D70088B1F5 /* NewSessionView.swift in Sources */,
+				9458EA2E279CA4D70088B1F5 /* Whoops.swift in Sources */,
+				9458EA38279CA4D70088B1F5 /* CircularBusyIndicator.swift in Sources */,
+				9458EA20279CA4D70088B1F5 /* NextStepsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9458E9E0279CA3490088B1F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9458E9E1279CA3490088B1F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		9458E9E3279CA3490088B1F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Streamy (iOS).entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S2273LZ6GL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Streamy--iOS--Info.plist";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mbientlab.Streamy;
+				PRODUCT_NAME = Streamy;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9458E9E4279CA3490088B1F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Streamy (iOS).entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S2273LZ6GL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Streamy--iOS--Info.plist";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mbientlab.Streamy;
+				PRODUCT_NAME = Streamy;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9458E9E6279CA3490088B1F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S2273LZ6GL;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mbientlab.Streamy;
+				PRODUCT_NAME = Streamy;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9458E9E7279CA3490088B1F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S2273LZ6GL;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mbientlab.Streamy;
+				PRODUCT_NAME = Streamy;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9458E9C8279CA3480088B1F5 /* Build configuration list for PBXProject "Streamy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9458E9E0279CA3490088B1F5 /* Debug */,
+				9458E9E1279CA3490088B1F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9458E9E2279CA3490088B1F5 /* Build configuration list for PBXNativeTarget "Streamy (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9458E9E3279CA3490088B1F5 /* Debug */,
+				9458E9E4279CA3490088B1F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9458E9E5279CA3490088B1F5 /* Build configuration list for PBXNativeTarget "Streamy (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9458E9E6279CA3490088B1F5 /* Debug */,
+				9458E9E7279CA3490088B1F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9458E9E8279CA3860088B1F5 /* XCRemoteSwiftPackageReference "MetaWear-Swift-Combine-SDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mbientlab/MetaWear-Swift-Combine-SDK";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9458E9E9279CA3860088B1F5 /* MetaWear */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9458E9E8279CA3860088B1F5 /* XCRemoteSwiftPackageReference "MetaWear-Swift-Combine-SDK" */;
+			productName = MetaWear;
+		};
+		9458E9EB279CA3860088B1F5 /* MetaWearCpp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9458E9E8279CA3860088B1F5 /* XCRemoteSwiftPackageReference "MetaWear-Swift-Combine-SDK" */;
+			productName = MetaWearCpp;
+		};
+		9458E9ED279CA3860088B1F5 /* MetaWearSync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9458E9E8279CA3860088B1F5 /* XCRemoteSwiftPackageReference "MetaWear-Swift-Combine-SDK" */;
+			productName = MetaWearSync;
+		};
+		9458E9F6279CA49D0088B1F5 /* MetaWear */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9458E9E8279CA3860088B1F5 /* XCRemoteSwiftPackageReference "MetaWear-Swift-Combine-SDK" */;
+			productName = MetaWear;
+		};
+		9458E9F8279CA49D0088B1F5 /* MetaWearCpp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9458E9E8279CA3860088B1F5 /* XCRemoteSwiftPackageReference "MetaWear-Swift-Combine-SDK" */;
+			productName = MetaWearCpp;
+		};
+		9458E9FA279CA49D0088B1F5 /* MetaWearSync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9458E9E8279CA3860088B1F5 /* XCRemoteSwiftPackageReference "MetaWear-Swift-Combine-SDK" */;
+			productName = MetaWearSync;
+		};
+		9458EA45279CAC580088B1F5 /* StreamyLogic */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StreamyLogic;
+		};
+		9458EA47279CAC5D0088B1F5 /* StreamyLogic */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StreamyLogic;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9458E9C5279CA3480088B1F5 /* Project object */;
+}
