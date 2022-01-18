@@ -7,19 +7,71 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		943D0E16279649A40087F869 /* StreamyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E15279649A40087F869 /* StreamyApp.swift */; };
-		943D0E18279649A40087F869 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E17279649A40087F869 /* ContentView.swift */; };
+		940C1C47279821BD00F7F149 /* MetaWear in Frameworks */ = {isa = PBXBuildFile; productRef = 940C1C46279821BD00F7F149 /* MetaWear */; };
+		940C1C49279821BD00F7F149 /* MetaWearCpp in Frameworks */ = {isa = PBXBuildFile; productRef = 940C1C48279821BD00F7F149 /* MetaWearCpp */; };
+		940C1C4B279821BD00F7F149 /* MetaWearSync in Frameworks */ = {isa = PBXBuildFile; productRef = 940C1C4A279821BD00F7F149 /* MetaWearSync */; };
+		943D0E16279649A40087F869 /* MacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E15279649A40087F869 /* MacApp.swift */; };
+		943D0E18279649A40087F869 /* DeviceListSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E17279649A40087F869 /* DeviceListSidebar.swift */; };
 		943D0E1A279649A50087F869 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 943D0E19279649A50087F869 /* Assets.xcassets */; };
 		943D0E1D279649A50087F869 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 943D0E1C279649A50087F869 /* Preview Assets.xcassets */; };
+		943D0E29279649C00087F869 /* DeviceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E24279649C00087F869 /* DeviceList.swift */; };
+		943D0E2A279649C00087F869 /* FolderFileDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E25279649C00087F869 /* FolderFileDocument.swift */; };
+		943D0E2B279649C00087F869 /* SensorLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E26279649C00087F869 /* SensorLogging.swift */; };
+		943D0E2C279649C00087F869 /* KnownDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E27279649C00087F869 /* KnownDevice.swift */; };
+		943D0E2D279649C00087F869 /* UnknownDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E28279649C00087F869 /* UnknownDevice.swift */; };
+		943D0E3B2796564A0087F869 /* SensorLoggingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E3A2796564A0087F869 /* SensorLoggingView.swift */; };
+		943D0E3E279657500087F869 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943D0E3D279657500087F869 /* CloudKit.framework */; };
+		943D0E4027966B350087F869 /* BluetoothStateToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E3F27966B350087F869 /* BluetoothStateToolbar.swift */; };
+		943D0E4227966B4C0087F869 /* BluetoothState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E4127966B4C0087F869 /* BluetoothState.swift */; };
+		943D0E44279673E80087F869 /* CircularBusyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E43279673E80087F869 /* CircularBusyIndicator.swift */; };
+		94E8453D279745A800E35846 /* MetaWear in Frameworks */ = {isa = PBXBuildFile; productRef = 94E8453C279745A800E35846 /* MetaWear */; };
+		94E8453F279745A800E35846 /* MetaWearCpp in Frameworks */ = {isa = PBXBuildFile; productRef = 94E8453E279745A800E35846 /* MetaWearCpp */; };
+		94E84541279745A800E35846 /* MetaWearSync in Frameworks */ = {isa = PBXBuildFile; productRef = 94E84540279745A800E35846 /* MetaWearSync */; };
+		94EEC16F27968266009107AF /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEC16E27968266009107AF /* iOSApp.swift */; };
+		94EEC17327968267009107AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94EEC17227968267009107AF /* Assets.xcassets */; };
+		94EEC17627968267009107AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94EEC17527968267009107AF /* Preview Assets.xcassets */; };
+		94EEC17B2796829E009107AF /* DeviceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E24279649C00087F869 /* DeviceList.swift */; };
+		94EEC17C2796829E009107AF /* KnownDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E27279649C00087F869 /* KnownDevice.swift */; };
+		94EEC17D2796829E009107AF /* SensorLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E26279649C00087F869 /* SensorLogging.swift */; };
+		94EEC17E2796829E009107AF /* BluetoothState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E4127966B4C0087F869 /* BluetoothState.swift */; };
+		94EEC17F2796829E009107AF /* UnknownDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E28279649C00087F869 /* UnknownDevice.swift */; };
+		94EEC180279682A9009107AF /* SensorLoggingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E3A2796564A0087F869 /* SensorLoggingView.swift */; };
+		94EEC181279682A9009107AF /* DeviceListSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E17279649A40087F869 /* DeviceListSidebar.swift */; };
+		94EEC182279682A9009107AF /* FolderFileDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E25279649C00087F869 /* FolderFileDocument.swift */; };
+		94EEC183279682A9009107AF /* BluetoothStateToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E3F27966B350087F869 /* BluetoothStateToolbar.swift */; };
+		94EEC184279682A9009107AF /* CircularBusyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943D0E43279673E80087F869 /* CircularBusyIndicator.swift */; };
+		94EEC18627968329009107AF /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEC18527968329009107AF /* Root.swift */; };
+		94EEC1872796832C009107AF /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEC18527968329009107AF /* Root.swift */; };
+		94EEC18B279683F3009107AF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EEC18A279683F3009107AF /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		943D0E12279649A40087F869 /* Streamy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		943D0E15279649A40087F869 /* StreamyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamyApp.swift; sourceTree = "<group>"; };
-		943D0E17279649A40087F869 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		943D0E15279649A40087F869 /* MacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacApp.swift; sourceTree = "<group>"; };
+		943D0E17279649A40087F869 /* DeviceListSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListSidebar.swift; sourceTree = "<group>"; };
 		943D0E19279649A50087F869 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		943D0E1C279649A50087F869 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		943D0E1E279649A50087F869 /* Streamy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Streamy.entitlements; sourceTree = "<group>"; };
+		943D0E24279649C00087F869 /* DeviceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceList.swift; sourceTree = "<group>"; };
+		943D0E25279649C00087F869 /* FolderFileDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderFileDocument.swift; sourceTree = "<group>"; };
+		943D0E26279649C00087F869 /* SensorLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorLogging.swift; sourceTree = "<group>"; };
+		943D0E27279649C00087F869 /* KnownDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnownDevice.swift; sourceTree = "<group>"; };
+		943D0E28279649C00087F869 /* UnknownDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnknownDevice.swift; sourceTree = "<group>"; };
+		943D0E3A2796564A0087F869 /* SensorLoggingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorLoggingView.swift; sourceTree = "<group>"; };
+		943D0E3D279657500087F869 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		943D0E3F27966B350087F869 /* BluetoothStateToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothStateToolbar.swift; sourceTree = "<group>"; };
+		943D0E4127966B4C0087F869 /* BluetoothState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothState.swift; sourceTree = "<group>"; };
+		943D0E43279673E80087F869 /* CircularBusyIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBusyIndicator.swift; sourceTree = "<group>"; };
+		94DE33DF27991C000093E8F1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		94EEC16C27968266009107AF /* Streamy iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Streamy iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		94EEC16E27968266009107AF /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		94EEC17227968267009107AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		94EEC17527968267009107AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		94EEC18527968329009107AF /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		94EEC188279683B4009107AF /* Streamy iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Streamy iOS.entitlements"; sourceTree = "<group>"; };
+		94EEC18A279683F3009107AF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		94EEC18C2796840F009107AF /* Streamy-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Streamy-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
+		94EEC18D27968477009107AF /* Streamy iOSRelease.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Streamy iOSRelease.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +79,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94E8453D279745A800E35846 /* MetaWear in Frameworks */,
+				943D0E3E279657500087F869 /* CloudKit.framework in Frameworks */,
+				94E8453F279745A800E35846 /* MetaWearCpp in Frameworks */,
+				94E84541279745A800E35846 /* MetaWearSync in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94EEC16927968266009107AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				940C1C47279821BD00F7F149 /* MetaWear in Frameworks */,
+				94EEC18B279683F3009107AF /* CloudKit.framework in Frameworks */,
+				940C1C49279821BD00F7F149 /* MetaWearCpp in Frameworks */,
+				940C1C4B279821BD00F7F149 /* MetaWearSync in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,8 +103,12 @@
 		943D0E09279649A40087F869 = {
 			isa = PBXGroup;
 			children = (
+				94DE33DF27991C000093E8F1 /* README.md */,
+				94EEC17A27968279009107AF /* Shared */,
 				943D0E14279649A40087F869 /* Streamy */,
+				94EEC16D27968266009107AF /* Streamy iOS */,
 				943D0E13279649A40087F869 /* Products */,
+				943D0E3C279657500087F869 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -45,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				943D0E12279649A40087F869 /* Streamy.app */,
+				94EEC16C27968266009107AF /* Streamy iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -52,8 +124,7 @@
 		943D0E14279649A40087F869 /* Streamy */ = {
 			isa = PBXGroup;
 			children = (
-				943D0E15279649A40087F869 /* StreamyApp.swift */,
-				943D0E17279649A40087F869 /* ContentView.swift */,
+				943D0E15279649A40087F869 /* MacApp.swift */,
 				943D0E19279649A50087F869 /* Assets.xcassets */,
 				943D0E1E279649A50087F869 /* Streamy.entitlements */,
 				943D0E1B279649A50087F869 /* Preview Content */,
@@ -67,6 +138,86 @@
 				943D0E1C279649A50087F869 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		943D0E2E279649C30087F869 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				943D0E24279649C00087F869 /* DeviceList.swift */,
+				943D0E27279649C00087F869 /* KnownDevice.swift */,
+				943D0E28279649C00087F869 /* UnknownDevice.swift */,
+				943D0E26279649C00087F869 /* SensorLogging.swift */,
+				943D0E4127966B4C0087F869 /* BluetoothState.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		943D0E30279649E90087F869 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				948C92D32796C78600F84F5D /* Components */,
+				948C92D22796C77D00F84F5D /* Screens */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		943D0E3C279657500087F869 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94EEC18A279683F3009107AF /* CloudKit.framework */,
+				943D0E3D279657500087F869 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		948C92D22796C77D00F84F5D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				943D0E17279649A40087F869 /* DeviceListSidebar.swift */,
+				943D0E3A2796564A0087F869 /* SensorLoggingView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		948C92D32796C78600F84F5D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				943D0E3F27966B350087F869 /* BluetoothStateToolbar.swift */,
+				943D0E43279673E80087F869 /* CircularBusyIndicator.swift */,
+				943D0E25279649C00087F869 /* FolderFileDocument.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		94EEC16D27968266009107AF /* Streamy iOS */ = {
+			isa = PBXGroup;
+			children = (
+				94EEC16E27968266009107AF /* iOSApp.swift */,
+				94EEC17227968267009107AF /* Assets.xcassets */,
+				94EEC18C2796840F009107AF /* Streamy-iOS-Info.plist */,
+				94EEC18D27968477009107AF /* Streamy iOSRelease.entitlements */,
+				94EEC188279683B4009107AF /* Streamy iOS.entitlements */,
+				94EEC17427968267009107AF /* Preview Content */,
+			);
+			path = "Streamy iOS";
+			sourceTree = "<group>";
+		};
+		94EEC17427968267009107AF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				94EEC17527968267009107AF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		94EEC17A27968279009107AF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				94EEC18527968329009107AF /* Root.swift */,
+				943D0E2E279649C30087F869 /* Controllers */,
+				943D0E30279649E90087F869 /* UI */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,8 +236,35 @@
 			dependencies = (
 			);
 			name = Streamy;
+			packageProductDependencies = (
+				94E8453C279745A800E35846 /* MetaWear */,
+				94E8453E279745A800E35846 /* MetaWearCpp */,
+				94E84540279745A800E35846 /* MetaWearSync */,
+			);
 			productName = Streamy;
 			productReference = 943D0E12279649A40087F869 /* Streamy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		94EEC16B27968266009107AF /* Streamy iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94EEC17927968267009107AF /* Build configuration list for PBXNativeTarget "Streamy iOS" */;
+			buildPhases = (
+				94EEC16827968266009107AF /* Sources */,
+				94EEC16927968266009107AF /* Frameworks */,
+				94EEC16A27968266009107AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Streamy iOS";
+			packageProductDependencies = (
+				940C1C46279821BD00F7F149 /* MetaWear */,
+				940C1C48279821BD00F7F149 /* MetaWearCpp */,
+				940C1C4A279821BD00F7F149 /* MetaWearSync */,
+			);
+			productName = "Streamy iOS";
+			productReference = 94EEC16C27968266009107AF /* Streamy iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -97,9 +275,12 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					943D0E11279649A40087F869 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					94EEC16B27968266009107AF = {
 						CreatedOnToolsVersion = 13.1;
 					};
 				};
@@ -113,11 +294,15 @@
 				Base,
 			);
 			mainGroup = 943D0E09279649A40087F869;
+			packageReferences = (
+				94E8453B279745A800E35846 /* XCRemoteSwiftPackageReference "MetaWear-SDK-Swift-Combine" */,
+			);
 			productRefGroup = 943D0E13279649A40087F869 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				943D0E11279649A40087F869 /* Streamy */,
+				94EEC16B27968266009107AF /* Streamy iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +317,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		94EEC16A27968266009107AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94EEC17627968267009107AF /* Preview Assets.xcassets in Resources */,
+				94EEC17327968267009107AF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -139,8 +333,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				943D0E18279649A40087F869 /* ContentView.swift in Sources */,
-				943D0E16279649A40087F869 /* StreamyApp.swift in Sources */,
+				943D0E4227966B4C0087F869 /* BluetoothState.swift in Sources */,
+				943D0E18279649A40087F869 /* DeviceListSidebar.swift in Sources */,
+				943D0E29279649C00087F869 /* DeviceList.swift in Sources */,
+				943D0E2A279649C00087F869 /* FolderFileDocument.swift in Sources */,
+				943D0E2C279649C00087F869 /* KnownDevice.swift in Sources */,
+				94EEC18627968329009107AF /* Root.swift in Sources */,
+				943D0E2B279649C00087F869 /* SensorLogging.swift in Sources */,
+				943D0E2D279649C00087F869 /* UnknownDevice.swift in Sources */,
+				943D0E4027966B350087F869 /* BluetoothStateToolbar.swift in Sources */,
+				943D0E44279673E80087F869 /* CircularBusyIndicator.swift in Sources */,
+				943D0E3B2796564A0087F869 /* SensorLoggingView.swift in Sources */,
+				943D0E16279649A40087F869 /* MacApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94EEC16827968266009107AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94EEC17C2796829E009107AF /* KnownDevice.swift in Sources */,
+				94EEC17B2796829E009107AF /* DeviceList.swift in Sources */,
+				94EEC184279682A9009107AF /* CircularBusyIndicator.swift in Sources */,
+				94EEC17D2796829E009107AF /* SensorLogging.swift in Sources */,
+				94EEC17E2796829E009107AF /* BluetoothState.swift in Sources */,
+				94EEC17F2796829E009107AF /* UnknownDevice.swift in Sources */,
+				94EEC183279682A9009107AF /* BluetoothStateToolbar.swift in Sources */,
+				94EEC1872796832C009107AF /* Root.swift in Sources */,
+				94EEC182279682A9009107AF /* FolderFileDocument.swift in Sources */,
+				94EEC181279682A9009107AF /* DeviceListSidebar.swift in Sources */,
+				94EEC180279682A9009107AF /* SensorLoggingView.swift in Sources */,
+				94EEC16F27968266009107AF /* iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +491,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Streamy/Streamy.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -276,6 +500,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to nearby MetaWear sensors.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -295,6 +522,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Streamy/Streamy.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -303,6 +531,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to nearby MetaWear sensors.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -313,6 +544,87 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		94EEC17727968267009107AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Streamy iOS/Streamy iOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Streamy iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = S2273LZ6GL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Streamy-iOS-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mbientlab.Streamy-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		94EEC17827968267009107AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Streamy iOS/Streamy iOSRelease.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Streamy iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = S2273LZ6GL;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Streamy-iOS-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Connect to nearby MetaWear sensors.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mbientlab.Streamy-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -337,7 +649,60 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		94EEC17927968267009107AF /* Build configuration list for PBXNativeTarget "Streamy iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94EEC17727968267009107AF /* Debug */,
+				94EEC17827968267009107AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		94E8453B279745A800E35846 /* XCRemoteSwiftPackageReference "MetaWear-SDK-Swift-Combine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mbientlab/MetaWear-SDK-Swift-Combine";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		940C1C46279821BD00F7F149 /* MetaWear */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94E8453B279745A800E35846 /* XCRemoteSwiftPackageReference "MetaWear-SDK-Swift-Combine" */;
+			productName = MetaWear;
+		};
+		940C1C48279821BD00F7F149 /* MetaWearCpp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94E8453B279745A800E35846 /* XCRemoteSwiftPackageReference "MetaWear-SDK-Swift-Combine" */;
+			productName = MetaWearCpp;
+		};
+		940C1C4A279821BD00F7F149 /* MetaWearSync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94E8453B279745A800E35846 /* XCRemoteSwiftPackageReference "MetaWear-SDK-Swift-Combine" */;
+			productName = MetaWearSync;
+		};
+		94E8453C279745A800E35846 /* MetaWear */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94E8453B279745A800E35846 /* XCRemoteSwiftPackageReference "MetaWear-SDK-Swift-Combine" */;
+			productName = MetaWear;
+		};
+		94E8453E279745A800E35846 /* MetaWearCpp */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94E8453B279745A800E35846 /* XCRemoteSwiftPackageReference "MetaWear-SDK-Swift-Combine" */;
+			productName = MetaWearCpp;
+		};
+		94E84540279745A800E35846 /* MetaWearSync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94E8453B279745A800E35846 /* XCRemoteSwiftPackageReference "MetaWear-SDK-Swift-Combine" */;
+			productName = MetaWearSync;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 943D0E0A279649A40087F869 /* Project object */;
 }
