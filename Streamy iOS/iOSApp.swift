@@ -2,24 +2,20 @@ import SwiftUI
 
 @main
 struct iOSApp: App {
-    @UIApplicationDelegateAdaptor private var delegate: AppDelegate
-    @StateObject private var root = Root()
+    @UIApplicationDelegateAdaptor private var app: AppDelegate
 
     var body: some Scene {
-        WindowGroup {
-            NavigationView {
-                DeviceListSidebar(root)
-                EmptyView()
-            }
-            .navigationViewStyle(.columns)
-            .onAppear(perform: root.start)
-            .environmentObject(root)
-        }
-        .commands { SidebarCommands() }
+        MainScene(factory: .init(root: app.root))
     }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+
+    let root = Root()
+
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        root.start()
+    }
 
     /// Force navigation sidebar to show in demo app
     func application(_ app: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {

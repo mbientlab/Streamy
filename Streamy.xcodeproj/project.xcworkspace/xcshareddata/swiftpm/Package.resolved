@@ -12,11 +12,11 @@
       },
       {
         "package": "MetaWear",
-        "repositoryURL": "https://github.com/mbientlab/MetaWear-SDK-Swift-Combine",
+        "repositoryURL": "https://github.com/mbientlab/MetaWear-Swift-Combine-SDK",
         "state": {
           "branch": null,
-          "revision": "47a8e20243ff35c335e5e59209a679059c334946",
-          "version": "0.4.0"
+          "revision": "2baae1078def155d7a379fc6c044ed352c7c123b",
+          "version": "0.4.6"
         }
       },
       {

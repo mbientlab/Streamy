@@ -7,7 +7,7 @@ import Combine
 ///
 /// See `From Zero to Machine Learning -> Chapter 1 -> Connecting to MetaWears -> Section 1`.
 ///
-class DeviceListController: ObservableObject {
+class DeviceListUseCase: ObservableObject {
 
     @Published private(set) var unknownDevices: [CBPeripheralIdentifier] = []
     @Published private(set) var knownDevices:   [MACAddress] = []
@@ -16,7 +16,7 @@ class DeviceListController: ObservableObject {
     private weak var scanner:  MetaWearScanner?
     private var unknownSub:    AnyCancellable?     = nil
     private var knownSub:      AnyCancellable?     = nil
-    var childDidAddDeviceSubs: Set<AnyCancellable> = []
+    let unknownIdentifierSubs: UnownedCancellableStore = .init()
 
     init(_ sync: MetaWearSyncStore, _ scanner: MetaWearScanner) {
         self.sync = sync
@@ -24,22 +24,17 @@ class DeviceListController: ObservableObject {
     }
 }
 
-extension DeviceListController {
+extension DeviceListUseCase {
 
     func onAppear() {
         scanner?.startScan(higherPerformanceMode: true)
 
-        unknownSub = sync?.unknownDevices
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] in self?.unknownDevices = $0.sorted() }
+        guard let sync = sync else { return }
+        unknownSub = SDKAction.streamUnknownDeviceIDs(sync)
+            .sink { [weak self] in self?.unknownDevices = $0 }
 
-        knownSub = sync?.knownDevices
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] metadata in
-                self?.knownDevices = metadata
-                    .sorted(using: KeyPathComparator(\.name))
-                    .map(\.mac)
-            }
+        knownSub = SDKAction.streamKnownDeviceIDs(sync)
+            .sink { [weak self] in self?.knownDevices = $0 }
     }
 
     func onDisappear() {

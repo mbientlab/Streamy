@@ -3,15 +3,17 @@ import MetaWear
 import Combine
 import CoreBluetooth
 
-class BluetoothStateVM: ObservableObject {
+/// Tracks Bluetooth authorization, power, and scanning state. Opens preferences on macOS and iOS when requested.
+///
+class BluetoothUseCase: ObservableObject {
 
-    @Published private(set) var isScanning: Bool
-    @Published private var state:           CBManagerState
     public var showError:                   Bool { state.isProblematic }
+    @Published private var state:           CBManagerState
+    @Published private(set) var isScanning: Bool
 
-    private weak var scanner: MetaWearScanner?
-    private var scannerSub:   AnyCancellable? = nil
-    private var bluetoothSub: AnyCancellable? = nil
+    private weak var scanner:               MetaWearScanner?
+    private var scannerSub:                 AnyCancellable? = nil
+    private var bluetoothSub:               AnyCancellable? = nil
 
     init(_ scanner: MetaWearScanner) {
         self.scanner = scanner
@@ -20,15 +22,15 @@ class BluetoothStateVM: ObservableObject {
     }
 }
 
-extension BluetoothStateVM  {
+extension BluetoothUseCase  {
 
     func onAppear() {
         scannerSub = scanner?.isScanningPublisher
-            .receive(on: DispatchQueue.main)
+            .onMain()
             .sink { [weak self] in self?.isScanning = $0 }
 
         bluetoothSub = scanner?.bluetoothState
-            .receive(on: DispatchQueue.main, options: nil)
+            .onMain()
             .sink { [weak self] in self?.state = $0  }
     }
 
@@ -64,4 +66,8 @@ fileprivate extension CBManagerState {
             default: return nil
         }
     }
+}
+
+extension CBPeripheralState {
+    var isConnected: Bool { self == .connected }
 }

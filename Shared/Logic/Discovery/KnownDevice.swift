@@ -8,7 +8,7 @@ import CoreBluetooth
 ///
 /// See `From Zero to Machine Learning -> Chapter 1 -> Connecting to MetaWears -> Section 3`.
 ///
-class KnownDeviceController: ObservableObject {
+class KnownDeviceUseCase: ObservableObject {
 
     var name: String { metadata.name }
 
@@ -25,15 +25,15 @@ class KnownDeviceController: ObservableObject {
 
     private weak var metawear: MetaWear?
     private weak var sync:     MetaWearSyncStore?
-    private var identitySub:   AnyCancellable? = nil
-    private var identifySub:   AnyCancellable? = nil
-    private var rssiSub:       AnyCancellable? = nil
     private var connectionSub: AnyCancellable? = nil
+    private var identitySub:   AnyCancellable? = nil
+    private var flashLEDSub:   AnyCancellable? = nil
     private var resetSub:      AnyCancellable? = nil
+    private var rssiSub:       AnyCancellable? = nil
 
-    init(knownDevice: MACAddress, sync: MetaWearSyncStore) {
+    init(_ device: MWKnownDevice, _ sync: MetaWearSyncStore) {
         self.sync = sync
-        (self.metawear, self.metadata) = sync.getDeviceAndMetadata(knownDevice)!
+        (self.metawear, self.metadata) = device
         self.rssi = self.metawear?.rssi ?? -100
         self.connection = self.metawear?.connectionState ?? .disconnected
     }
@@ -62,48 +62,45 @@ class KnownDeviceController: ObservableObject {
     }
 
     func reset() {
-        resetSub = metawear?
-            .publishWhenConnected()
-            .first()
-            .command(.resetActivities)
+        guard let metawear = metawear else { return }
+        resetSub = SDKAction
+            .reset(metawear)
             .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
-
-        metawear?.connect()
+        metawear.connect()
     }
 
     func identify() {
-        identifySub = metawear?.publishWhenConnected()
-            .first()
-            .command(.ledFlash(.Presets.one.pattern))
+        guard let metawear = metawear else { return }
+        flashLEDSub = SDKAction
+            .identify(metawear, pattern: .nine)
             .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
-        if metawear?.connectionState ?? .disconnected < .connecting { metawear?.connect() }
+        metawear.connect()
     }
 }
 
-private extension KnownDeviceController {
+private extension KnownDeviceUseCase {
 
     func trackRSSI() {
         rssiSub = metawear?.rssiPublisher
-            .receive(on: DispatchQueue.main)
+            .onMain()
             .sink { [weak self] in self?.rssi = $0 }
     }
 
     func trackConnection() {
         connectionSub = metawear?.connectionStatePublisher
-            .receive(on: DispatchQueue.main)
+            .onMain()
             .sink { [weak self] in self?.connection = $0 }
     }
 
     func trackIdentity() {
         identitySub = sync?.publisher(for: metadata.mac)
-            .print()
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] metawear, metadata in
-                let metaWearReferenceNowAvailable = self?.metawear == nil && metawear != nil
-                self?.metawear = metawear
+            .onMain()
+            .sink { [weak self] deviceReference, metadata in
+                let justFoundMetaWear = self?.metawear == nil && deviceReference != nil
+                self?.metawear = deviceReference
                 self?.metadata = metadata
 
-                if metaWearReferenceNowAvailable {
+                if justFoundMetaWear {
                     self?.trackRSSI()
                     self?.trackConnection()
                 }
