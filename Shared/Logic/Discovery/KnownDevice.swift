@@ -37,6 +37,9 @@ class KnownDeviceUseCase: ObservableObject {
         self.rssi = self.metawear?.rssi ?? -100
         self.connection = self.metawear?.connectionState ?? .disconnected
     }
+}
+
+extension KnownDeviceUseCase {
 
     func onAppear() {
         trackIdentity()
@@ -61,10 +64,10 @@ class KnownDeviceUseCase: ObservableObject {
         catch { showRenamePrompt = true }
     }
 
-    func reset() {
+    func resetDeletingLogs() {
         guard let metawear = metawear else { return }
         resetSub = SDKAction
-            .reset(metawear)
+            .resetDeletingLogs(metawear)
             .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
         metawear.connect()
     }

@@ -108,7 +108,7 @@ extension KnownDeviceCellViewModel: Observer where O == KnownDeviceUseCase {
         self.disconnect = controller.disconnect
         self.identify = controller.identify
         self.forget = controller.forget
-        self.reset = controller.reset
+        self.reset = controller.resetDeletingLogs
         self.onAppear = controller.onAppear
     }
 }

@@ -81,12 +81,12 @@ extension SDKAction {
 
     /// Resets the MetaWear and removes logged data, but retains settings. Does nothing if not connected (i.e., call `.connect()`).
     ///
-    static func reset(_ metawear: MetaWear) -> AnyPublisher<(),MWError> {
+    static func resetDeletingLogs(_ metawear: MetaWear) -> AnyPublisher<(),MWError> {
         metawear
             .publishWhenConnected()
             .first()
-            .command(.resetActivities)
             .deleteLoggedEntries()
+            .command(.resetActivities)
             .voidOnMain()
     }
 
@@ -98,6 +98,8 @@ extension SDKAction {
             .first()
             .optionallyLog(configs.accelerometer)
             .optionallyLog(configs.gyroscope)
+            .optionallyLog(configs.linearAcc)
+            .optionallyLog(configs.quaternion)
             .voidOnMain()
     }
 

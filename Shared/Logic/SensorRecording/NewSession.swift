@@ -9,7 +9,9 @@ import CoreBluetooth
 class NewSessionUseCase: ObservableObject {
 
     @Published private(set) var sensors:  Set<MWNamedSignal> = []
-    let sensorChoices:                    [MWNamedSignal] = [.acceleration, .gyroscope]
+    let sensorChoices:                    [MWNamedSignal] = [
+        .acceleration, .gyroscope, .linearAcceleration, .quaternion
+    ]
     private(set) var startDate:           Date
 
     @Published private(set) var cta:      UseCaseCTA      = .log
@@ -31,7 +33,11 @@ extension NewSessionUseCase {
     /// Start a logging session.
     ///
     func didTapCTA() {
-        guard cta == .log, sensors.hasElements, let metawear = metawear else { return }
+        guard cta == .log,
+              sensors.hasElements,
+              let metawear = metawear
+        else { return }
+
         state = .workingIndefinite
 
         actionSub = SDKAction
@@ -53,8 +59,6 @@ extension NewSessionUseCase {
         state = .ready
     }
 
-    /// Vends a toggle binding to a set. Applies logic when adding a new member.
-    ///
     /// Some MetaWear logging options try to use the same sensors at the same time. Thus, their use is mutually exclusive.
     /// Specifically, when fusing sensors together to log quaternion, linear acceleration, gravity, or Euler angles,
     /// the accelerometer, gyroscope, and magnetometer will be occupied and cannot provide a second data stream.
@@ -77,15 +81,25 @@ extension NewSessionUseCase {
 struct SensorConfigurations {
     var accelerometer: MWAccelerometer? = nil
     var gyroscope:     MWGyroscope?     = nil
+    var linearAcc:     MWSensorFusion.LinearAcceleration? = nil
+    var quaternion:    MWSensorFusion.Quaternion? = nil
 
-    /// Input a valid selection of signals  (some are mutually exclusive).
+    /// Input a valid selection of signals (some are mutually exclusive).
     ///
     init(selections: Set<MWNamedSignal>)  {
+        if selections.contains(.linearAcceleration) {
+            linearAcc  = .init(mode: .imuplus)
+            return
+        } else if selections.contains(.quaternion) {
+            quaternion = .init(mode: .imuplus)
+            return
+        }
+
         if selections.contains(.acceleration) {
             accelerometer = .init(rate: .hz100, gravity: .g16)
         }
         if selections.contains(.gyroscope) {
-            gyroscope     = .init(rate: .hz100, range: .dps2000)
+            gyroscope = .init(rate: .hz100, range: .dps2000)
         }
     }
 }
