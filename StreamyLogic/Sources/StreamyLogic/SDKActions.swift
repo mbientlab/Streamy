@@ -85,7 +85,7 @@ extension SDKAction {
         metawear
             .publishWhenConnected()
             .first()
-            .deleteLoggedEntries()
+            .command(.deleteLoggedData)
             .command(.resetActivities)
             .voidOnMain()
     }
@@ -123,7 +123,7 @@ extension SDKAction {
                 }
             })
             .drop { $0.percentComplete < 1 }
-            .map { $0.data }
+            .map(\.data)
             .receive(on: DispatchQueue.global())
             .eraseToAnyPublisher()
     }
