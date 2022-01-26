@@ -75,7 +75,7 @@ public extension KnownDeviceUseCase {
     func identify() {
         guard let metawear = metawear else { return }
         flashLEDSub = SDKAction
-            .identify(metawear, pattern: .nine)
+            .identify(metawear, color: .blue)
             .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
         metawear.connect()
     }

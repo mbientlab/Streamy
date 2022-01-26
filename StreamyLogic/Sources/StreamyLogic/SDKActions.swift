@@ -51,7 +51,7 @@ extension SDKAction {
     ) {
         let flashAfterConnection: (MWKnownDevice) -> Void = { [weak host] device in
             guard let host = host, let metawear = device.mw else { return }
-            SDKAction.identify(metawear, pattern: .one)
+            SDKAction.identify(metawear, color: .blue)
                 .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
                 .store(in: &host[keyPath: subs])
         }
@@ -61,11 +61,11 @@ extension SDKAction {
 
     /// Flashes the MetaWear's LED to help with identification. Does nothing if not connected (i.e., call `.connect()`).
     ///
-    static func identify(_ metawear: MetaWear, pattern: MWLED.Flash.Pattern.Presets) -> AnyPublisher<(),MWError> {
+    static func identify(_ metawear: MetaWear, color: MWLED.MBLColor) -> AnyPublisher<(),MWError> {
         metawear
             .publishWhenConnected()
             .first()
-            .command(.ledFlash(pattern.pattern))
+            .command(.led(color, .pulse(repetitions: 2)))
             .voidOnMain()
     }
 
@@ -85,7 +85,7 @@ extension SDKAction {
         metawear
             .publishWhenConnected()
             .first()
-            .deleteLoggedEntries()
+            .command(.deleteLoggedData)
             .command(.resetActivities)
             .voidOnMain()
     }
@@ -123,7 +123,7 @@ extension SDKAction {
                 }
             })
             .drop { $0.percentComplete < 1 }
-            .map { $0.data }
+            .map(\.data)
             .receive(on: DispatchQueue.global())
             .eraseToAnyPublisher()
     }
