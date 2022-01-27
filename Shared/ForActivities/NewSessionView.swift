@@ -2,7 +2,7 @@ import SwiftUI
 import MetaWear
 import StreamyLogic
 
-struct NewSessionViewModel<O: ObservableObject, Behavior: IdentifiableByRawValue> {
+struct NewSessionViewModel<O: ObservableObject, Behavior: MenuOption> {
     let title:     KeyPath<O, String>
     let ctaLabel:  KeyPath<O, String>
     let cta:       KeyPath<O, UseCaseCTA>
@@ -12,11 +12,12 @@ struct NewSessionViewModel<O: ObservableObject, Behavior: IdentifiableByRawValue
     let enableCTA: KeyPath<O, Bool>
     let didTapCTA: () -> Void
     let toggle:    (_ selection: MWNamedSignal) -> Void
+
     let behavior:  ReferenceWritableKeyPath<O, Behavior>?
     let behaviorOptions:   KeyPath<O, [Behavior]>?
 }
 
-struct NewSessionView<State: ObservableObject, Behavior: IdentifiableByRawValue>: View {
+struct NewSessionView<State: ObservableObject, Behavior: MenuOption>: View {
 
     init(_ observable: Observed<State, NewSessionViewModel<State, Behavior>>) {
         _state = .init(wrappedValue: observable.object)
@@ -37,6 +38,10 @@ struct NewSessionView<State: ObservableObject, Behavior: IdentifiableByRawValue>
                 sensorChoices
             }
             .listStyle(.inset)
+
+            MenuOptionPicker(state: state,
+                             choice: vm.behavior,
+                             choices: vm.behaviorOptions)
 
             #if os(macOS)
             ctaButton
@@ -101,5 +106,25 @@ struct NewSessionView<State: ObservableObject, Behavior: IdentifiableByRawValue>
     private func toggle(_ choice: MWNamedSignal) -> Binding<Bool> {
         .init(get: { state[keyPath: vm.selection].contains(choice) },
               set: { _ in vm.toggle(choice) })
+    }
+
+}
+
+struct MenuOptionPicker<Option: MenuOption, State: ObservableObject>: View {
+
+    @ObservedObject var state: State
+    let choice:  ReferenceWritableKeyPath<State, Option>?
+    let choices: KeyPath<State, [Option]>?
+
+    var body: some View {
+        if let path = choice, let options = choices {
+
+            Picker("Options", selection: $state[dynamicMember: path]) {
+                ForEach(state[keyPath: options]) { option in
+                    Text(option.rawValue).tag(option)
+                }
+            }
+            .pickerStyle(.menu)
+        }
     }
 }
