@@ -77,6 +77,14 @@ extension UIFactory {
         .observe(.init(device))
     }
 
+    func makeNewSessionBehaviorsObservables(for device: MWKnownDevice)
+    -> Observed<
+        NewSessionBehaviorsUseCase,
+        NewSessionViewModel<NewSessionBehaviorsUseCase, LoggingBehavior>
+    > {
+        .observe(.init(device))
+    }
+
     func makeDownloadObservables(for device: MWKnownDevice)
     -> Observed<
         DownloadUseCase,
@@ -221,6 +229,29 @@ VM == NewSessionViewModel<NewSessionUseCase, LoggingBehavior> {
                 toggle: object.toggleSensor,
                 behavior: nil,
                 behaviorOptions: nil
+              )
+        )
+    }
+}
+
+extension Observed where
+Object == NewSessionBehaviorsUseCase,
+VM == NewSessionViewModel<NewSessionBehaviorsUseCase, LoggingBehavior> {
+
+    static func observe(_ object: Object) -> Self {
+        .init(object: object,
+              vm: .init(
+                title:  \.deviceName,
+                ctaLabel: \.cta.displayName,
+                cta: \.cta,
+                menu: \.sensorChoices,
+                selection: \.sensors,
+                isWorking: \.state.isWorking,
+                enableCTA: \.state.isReady,
+                didTapCTA: object.didTapCTA,
+                toggle: object.toggleSensor,
+                behavior: \.behavior,
+                behaviorOptions: \.behaviorOptions
               )
         )
     }

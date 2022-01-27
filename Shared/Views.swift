@@ -45,7 +45,7 @@ extension Views {
         var body: some View {
             if let mac = routedDevice,
                let device = factory.getKnownDevice(mac: mac) {
-                NewSessionView(factory.makeNewSessionObservables(for: device))
+                NewSessionView(factory.makeNewSessionBehaviorsObservables(for: device))
             } else { WhoopsView(message: Views.failNoDevice) }
         }
     }
