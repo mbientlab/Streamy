@@ -17,7 +17,7 @@ struct DevicesListViewModel<O: ObservableObject> {
 
 struct DeviceListSidebar<Object: ObservableObject>: View {
 
-    init(_ observable: (object: Object, vm: DevicesListViewModel<Object>)) {
+    init(_ observable: Observed<Object, DevicesListViewModel<Object>>) {
         _state = .init(wrappedValue: observable.object)
         self.vm = observable.vm
     }

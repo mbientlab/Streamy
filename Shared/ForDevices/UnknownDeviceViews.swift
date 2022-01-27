@@ -13,7 +13,7 @@ struct UnknownDeviceCellViewModel<O: ObservableObject>: DeviceCellParentVM {
 
 struct UnknownDeviceCell<Object: ObservableObject>: View {
 
-    init(_ observable: (object: Object, vm: UnknownDeviceCellViewModel<Object>)) {
+    init(_ observable: Observed<Object, UnknownDeviceCellViewModel<Object>>) {
         _state = .init(wrappedValue: observable.object)
         self.vm = observable.vm
     }

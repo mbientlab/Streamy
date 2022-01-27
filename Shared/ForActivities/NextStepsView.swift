@@ -46,7 +46,7 @@ struct NextStepsView_StackNavStyle<Object: ObservableObject>: View {
 
 struct NextStepsView_MiddleColumnNavStyle<Object: ObservableObject>: View {
 
-    init(_ observable: (object: Object, vm: NextStepsViewModel<Object>)) {
+    init(_ observable: Observed<Object, NextStepsViewModel<Object>>) {
         _state = .init(wrappedValue: observable.object)
         self.vm = observable.vm
     }

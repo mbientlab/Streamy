@@ -16,7 +16,7 @@ struct NewSessionViewModel<O: ObservableObject> {
 
 struct NewSessionView<State: ObservableObject>: View {
 
-    init(_ observable: (object: State, vm: NewSessionViewModel<State>)) {
+    init(_ observable: Observed<State, NewSessionViewModel<State>>) {
         _state = .init(wrappedValue: observable.object)
         self.vm = observable.vm
     }

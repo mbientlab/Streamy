@@ -13,7 +13,7 @@ struct DownloadViewModel<O: ObservableObject> {
 
 struct DownloadView<Object: ObservableObject>: View {
 
-    init(_ observable: (object: Object, vm: DownloadViewModel<Object>)) {
+    init(_ observable: Observed<Object, DownloadViewModel<Object>>) {
         _state = .init(wrappedValue: observable.object)
         self.vm = observable.vm
     }

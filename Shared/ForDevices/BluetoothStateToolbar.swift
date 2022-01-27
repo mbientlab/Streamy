@@ -19,7 +19,7 @@ struct BluetoothStateToolbar: ToolbarContent {
 
 struct BluetoothStateToggleButton<Object: ObservableObject>: View {
 
-    init(_ observable: (object: Object, vm: BluetoothStateViewModel<Object>)) {
+    init(_ observable: Observed<Object, BluetoothStateViewModel<Object>>) {
         _state = .init(wrappedValue: observable.object)
         self.vm = observable.vm
     }
