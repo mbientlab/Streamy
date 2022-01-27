@@ -72,7 +72,7 @@ extension UIFactory {
     func makeNewSessionObservables(for device: MWKnownDevice)
     -> Observed<
         NewSessionUseCase,
-        NewSessionViewModel<NewSessionUseCase>
+        NewSessionViewModel<NewSessionUseCase, LoggingBehavior>
     > {
         .observe(.init(device))
     }
@@ -205,7 +205,7 @@ VM == NextStepsViewModel<NextStepsUseCase> {
 
 extension Observed where
 Object == NewSessionUseCase,
-VM == NewSessionViewModel<NewSessionUseCase> {
+VM == NewSessionViewModel<NewSessionUseCase, LoggingBehavior> {
 
     static func observe(_ object: Object) -> Self {
         .init(object: object,
@@ -218,7 +218,9 @@ VM == NewSessionViewModel<NewSessionUseCase> {
                 isWorking: \.state.isWorking,
                 enableCTA: \.state.isReady,
                 didTapCTA: object.didTapCTA,
-                toggle: object.toggleSensor
+                toggle: object.toggleSensor,
+                behavior: nil,
+                behaviorOptions: nil
               )
         )
     }

@@ -2,7 +2,7 @@ import SwiftUI
 import MetaWear
 import StreamyLogic
 
-struct NewSessionViewModel<O: ObservableObject> {
+struct NewSessionViewModel<O: ObservableObject, Behavior: IdentifiableByRawValue> {
     let title:     KeyPath<O, String>
     let ctaLabel:  KeyPath<O, String>
     let cta:       KeyPath<O, UseCaseCTA>
@@ -12,17 +12,19 @@ struct NewSessionViewModel<O: ObservableObject> {
     let enableCTA: KeyPath<O, Bool>
     let didTapCTA: () -> Void
     let toggle:    (_ selection: MWNamedSignal) -> Void
+    let behavior:  ReferenceWritableKeyPath<O, Behavior>?
+    let behaviorOptions:   KeyPath<O, [Behavior]>?
 }
 
-struct NewSessionView<State: ObservableObject>: View {
+struct NewSessionView<State: ObservableObject, Behavior: IdentifiableByRawValue>: View {
 
-    init(_ observable: Observed<State, NewSessionViewModel<State>>) {
+    init(_ observable: Observed<State, NewSessionViewModel<State, Behavior>>) {
         _state = .init(wrappedValue: observable.object)
         self.vm = observable.vm
     }
 
     @StateObject private var state: State
-    private let vm: NewSessionViewModel<State>
+    private let vm: NewSessionViewModel<State, Behavior>
     @Environment(\.explicitNavigationTarget) private var target
     @Environment(\.routedDevice) private var device
 

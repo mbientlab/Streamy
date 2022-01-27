@@ -1,4 +1,4 @@
-import SwiftUI
+import Foundation
 import MetaWear
 import MetaWearSync
 import Combine
@@ -20,11 +20,13 @@ public class NewSessionUseCase: ObservableObject {
 
     private weak var metawear:            MetaWear?       = nil
     private var actionSub:                AnyCancellable? = nil
+    internal var action:                  (MetaWear, Set<MWNamedSignal>) -> AnyPublisher<Void,MWError>
 
     public init(_ knownDevice: MWKnownDevice) {
         self.startDate = .init()
         self.metawear = knownDevice.mw
         self.deviceName = knownDevice.meta.name
+        self.action = { SDKAction.log($0, SensorConfigurations(selections: $1)) }
     }
 }
 
@@ -40,8 +42,7 @@ public extension NewSessionUseCase {
 
         state = .workingIndefinite
 
-        actionSub = SDKAction
-            .log(metawear, SensorConfigurations(selections: sensors))
+        actionSub = action(metawear, sensors)
             .sink(
                 receiveCompletion: { [weak self] in displayError(from: $0, on: self, \.state) },
                 receiveValue:      { [weak self] in self?.enableDownloading() }
