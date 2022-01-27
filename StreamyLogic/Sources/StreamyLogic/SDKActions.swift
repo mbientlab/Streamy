@@ -100,6 +100,7 @@ extension SDKAction {
             .optionallyLog(configs.gyroscope)
             .optionallyLog(configs.linearAcc)
             .optionallyLog(configs.quaternion)
+            .optionallyLog(configs.button)
             .voidOnMain()
     }
 
