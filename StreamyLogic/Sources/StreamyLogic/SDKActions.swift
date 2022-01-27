@@ -104,6 +104,41 @@ extension SDKAction {
             .voidOnMain()
     }
 
+    /// Customizable logging behavior (e.g., use the button to create trial runs) for whatever sensor configuration(s) are passed in. Does nothing if not connected (i.e., call `.connect()`).
+    ///
+    static func log(withBehavior behavior: LoggingBehavior?,
+                    _ metawear: MetaWear,
+                    _ configs: SensorConfigurations
+    ) -> AnyPublisher<(), MWError> {
+
+        switch behavior {
+            case nil, .startImmediatelyNoSplits:
+                return log(metawear, configs)
+
+            case .startLazilyPausePlayLoggersOnButtonDownUp:
+                return metawear
+                    .publishWhenConnected()
+                    .first()
+                    .command(.macroStartRecording(runOnStartup: true))
+                    .optionallyLog(configs.accelerometer, startsImmediately: false)
+                    .optionallyLog(configs.gyroscope,     startsImmediately: false)
+                    .optionallyLog(configs.linearAcc,     startsImmediately: false)
+                    .optionallyLog(configs.quaternion,    startsImmediately: false)
+                    .recordEvents(for: .buttonUp, { record in
+                        record
+                            .loggersStart()
+                            .command(.ledOff)
+                    })
+                    .recordEvents(for: .buttonDown, { record in
+                        record
+                            .loggersPause()
+                            .command(.led(.red, .solid()))
+                    })
+                    .command(.macroStopRecordingAndGenerateIdentifier)
+                    .voidOnMain()
+        }
+    }
+
     /// Downloads all logs on a device from any type of sensor.
     /// Progress estimates are sent on the main queue, but this returns on a background queue.
     /// Returns a string-encoded data in an array of MWDataTable, one per sensor type.
