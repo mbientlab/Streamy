@@ -269,7 +269,9 @@ VM == DownloadViewModel<DownloadUseCase> {
                 state: \.state,
                 export: \.export,
                 didTapCTA: object.didTapCTA,
-                onAppear: object.onAppear
+                onAppear: object.onAppear,
+                showSplitAlert: \.confirmSplitting,
+                didChooseToSplit: object.didChooseToSplitCSVColumns(byButtonPresses:)
               )
         )
     }

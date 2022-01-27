@@ -9,6 +9,8 @@ struct DownloadViewModel<O: ObservableObject> {
     let export:    KeyPath<O, ExportUseCase?>
     let didTapCTA: () -> Void
     let onAppear:  () -> Void
+    let showSplitAlert: ReferenceWritableKeyPath<O, Bool>
+    let didChooseToSplit: (Bool) -> Void
 }
 
 struct DownloadView<Object: ObservableObject>: View {
@@ -46,6 +48,15 @@ struct DownloadView<Object: ObservableObject>: View {
         .frame(maxWidth: .infinity, maxHeight:  .infinity)
         .animation(.easeIn, value: state[keyPath: vm.export] == nil)
         .animation(.easeIn, value: state[keyPath: vm.state])
+
+        .alert("Do you want button presses to mark trial runs?", isPresented: $state[dynamicMember: vm.showSplitAlert]) {
+            Button("No", role: .cancel, action: { vm.didChooseToSplit(false) })
+            Button("Split", role: .destructive, action: { vm.didChooseToSplit(true) })
+                .keyboardShortcut(.defaultAction)
+        } message: {
+            Text("Button release and press events can mark the start and end of a trial run. Each sensor can be split into multiple CSV files.")
+        }
+
     }
 
     private var ctaButton: some View {

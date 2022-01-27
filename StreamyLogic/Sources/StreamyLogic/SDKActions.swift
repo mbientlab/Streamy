@@ -120,6 +120,7 @@ extension SDKAction {
                     .publishWhenConnected()
                     .first()
                     .command(.macroStartRecording(runOnStartup: true))
+                    .log(.mechanicalButton)
                     .optionallyLog(configs.accelerometer, startsImmediately: false)
                     .optionallyLog(configs.gyroscope,     startsImmediately: false)
                     .optionallyLog(configs.linearAcc,     startsImmediately: false)
@@ -131,10 +132,12 @@ extension SDKAction {
                     })
                     .recordEvents(for: .buttonDown, { record in
                         record
-                            .loggersPause()
+                            /// Await C++ addition for loggersStop command, otherwise button up isn't itself logged.
                             .command(.led(.red, .solid()))
                     })
                     .command(.macroStopRecordingAndGenerateIdentifier)
+                    .map { _ in metawear }
+                    .command(.led(.green, .blink(repetitions: 2)))
                     .voidOnMain()
         }
     }
@@ -166,16 +169,20 @@ extension SDKAction {
 
     /// Changes downloaded data into CSV format.
     ///
-    static func convertToCSVs(_ dataTables: [MWDataTable], filenamePrefix: String) -> [CSVFile] {
-        dataTables.map { table -> (String, Data) in
-            let filename = [table.source.name, filenamePrefix].joined(separator: " ")
-            let csv = table.makeCSV(delimiter: ",").data(using: .utf8)!
-            return (filename, csv)
-        }
+    static func convertToCSVs(_ dataTables: [MWDataTable],
+                              filenameTag: String,
+                              options: LoggingBehavior) -> [CSVFile] {
+        let converter: CSVConverter = {
+            switch options {
+                case .startImmediatelyNoSplits:
+                    return NoSplitConverter()
+                case .startLazilyPausePlayLoggersOnButtonDownUp:
+                    return ButtonPressSplitConverter()
+            }
+        }()
+        return converter.convertToCSVs(dataTables, filenameTag)
     }
 }
-
-public typealias CSVFile = (filename: String, csv: Data)
 
 // MARK: - Error Handling Sugar
 
@@ -191,3 +198,4 @@ public func displayError<Object: AnyObject>(
         object?[keyPath: statePath] = .error(error)
     }
 }
+
