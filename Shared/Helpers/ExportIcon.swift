@@ -37,8 +37,14 @@ extension ExportIcon.Popup {
                 contentType: exporter.exportType,
                 defaultFilename: exporter.exportable?.name,
                 onCompletion: { result in
-                    guard case let .failure(error) = result else { return }
-                    self.error = error
+                    switch result {
+                        case .failure(let error):
+                            self.error = error
+                        case .success(let url):
+                            #if os(macOS)
+                            NSWorkspace.shared.activateFileViewerSelecting([url])
+                            #endif
+                    }
                 }
             )
     }
