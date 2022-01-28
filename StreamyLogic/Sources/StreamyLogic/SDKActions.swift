@@ -101,6 +101,7 @@ extension SDKAction {
             .optionallyLog(configs.linearAcc)
             .optionallyLog(configs.quaternion)
             .optionallyLog(configs.button)
+            .command(.led(.green, .blink(repetitions: 2)))
             .voidOnMain()
     }
 
