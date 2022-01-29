@@ -3,7 +3,7 @@ import XCTest
 import MetaWear
 import SwiftUI
 
-final class ButtonPressCSVTests: XCTestCase {
+final class CSVSplittingTests: XCTestCase {
 
     // MARK: - End to End
 

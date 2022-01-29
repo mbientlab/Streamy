@@ -75,7 +75,7 @@ extension SDKAction {
         metawear.publishWhenConnected()
             .first()
             .read(.logLength)
-            .map { $0.value > 0 }
+            .map { $0.value > 1 }
             .onMain()
     }
 
@@ -85,8 +85,7 @@ extension SDKAction {
         metawear
             .publishWhenConnected()
             .first()
-            .command(.deleteLoggedData)
-            .command(.resetActivities)
+            .command(.resetFactoryDefaults)
             .voidOnMain()
     }
 
@@ -96,6 +95,7 @@ extension SDKAction {
         metawear
             .publishWhenConnected()
             .first()
+            .optionallyLog(configs.pressure)
             .optionallyLog(configs.accelerometer)
             .optionallyLog(configs.gyroscope)
             .optionallyLog(configs.linearAcc)
@@ -120,20 +120,29 @@ extension SDKAction {
                 return metawear
                     .publishWhenConnected()
                     .first()
+                    .handleOutputOnBleQueue({ mw in
+                        let board = mw.board
+                        mbl_mw_logging_stop(board)
+                        mbl_mw_metawearboard_tear_down(board)
+                        mbl_mw_logging_clear_entries(board)
+                        mbl_mw_event_remove_all(board)
+                        mbl_mw_macro_erase_all(board)
+                    })
                     .command(.macroStartRecording(runOnStartup: true))
-                    .log(.mechanicalButton)
+                    .optionallyLog(configs.pressure,      startsImmediately: true)
                     .optionallyLog(configs.accelerometer, startsImmediately: false)
                     .optionallyLog(configs.gyroscope,     startsImmediately: false)
                     .optionallyLog(configs.linearAcc,     startsImmediately: false)
                     .optionallyLog(configs.quaternion,    startsImmediately: false)
+                    .log(.mechanicalButton)
                     .recordEvents(for: .buttonUp, { record in
                         record
-                            .loggersStart()
                             .command(.ledOff)
                     })
                     .recordEvents(for: .buttonDown, { record in
                         record
                             /// Await C++ addition for loggersStop command, otherwise button up isn't itself logged.
+                            .loggersStart()
                             .command(.led(.red, .solid()))
                     })
                     .command(.macroStopRecordingAndGenerateIdentifier)
@@ -178,7 +187,7 @@ extension SDKAction {
                 case .startImmediatelyNoSplits:
                     return NoSplitConverter()
                 case .startLazilyPausePlayLoggersOnButtonDownUp:
-                    return ButtonPressSplitConverter()
+                    return ButtonPressSplitConverter(startOn: .down)
             }
         }()
         return converter.convertToCSVs(dataTables, filenameTag)

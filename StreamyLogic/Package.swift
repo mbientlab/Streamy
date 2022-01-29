@@ -17,10 +17,15 @@ let package = Package(
         )
     ],
     targets: [
-        .target(name: "StreamyLogic", dependencies: [
-            .product(name: "MetaWear", package: "MetaWear", condition: nil),
-            .product(name: "MetaWearSync", package: "MetaWear", condition: nil)
-        ]),
+        .target(name: "StreamyLogic",
+                dependencies: [
+                    .product(name: "MetaWear", package: "MetaWear", condition: nil),
+                    .product(name: "MetaWearSync", package: "MetaWear", condition: nil)
+                ],
+                resources: [
+                    .process("StreamingPredictions/CoreML/Models"),
+                ]
+               ),
         .testTarget(name: "StreamyLogicTests", dependencies: ["StreamyLogic"]),
     ]
 )

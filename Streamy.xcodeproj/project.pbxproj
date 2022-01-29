@@ -59,6 +59,8 @@
 		9458EA48279CAC5D0088B1F5 /* StreamyLogic in Frameworks */ = {isa = PBXBuildFile; productRef = 9458EA47279CAC5D0088B1F5 /* StreamyLogic */; };
 		9458EA4A279CAC980088B1F5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9458EA49279CAC980088B1F5 /* README.md */; };
 		9458EA4B279CAC980088B1F5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9458EA49279CAC980088B1F5 /* README.md */; };
+		94DD016527A5AFD6006B2503 /* PredictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DD016427A5AFD6006B2503 /* PredictView.swift */; };
+		94DD016627A5AFD6006B2503 /* PredictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DD016427A5AFD6006B2503 /* PredictView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +92,7 @@
 		9458EA41279CAABB0088B1F5 /* Streamy--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Streamy--iOS--Info.plist"; sourceTree = "<group>"; };
 		9458EA44279CAC430088B1F5 /* StreamyLogic */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StreamyLogic; sourceTree = "<group>"; };
 		9458EA49279CAC980088B1F5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		94DD016427A5AFD6006B2503 /* PredictView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +191,7 @@
 				9458EA05279CA4D70088B1F5 /* NewSessionView.swift */,
 				9458EA06279CA4D70088B1F5 /* DownloadView.swift */,
 				9458EA02279CA4D70088B1F5 /* ThreeColumnRouter.swift */,
+				94DD016427A5AFD6006B2503 /* PredictView.swift */,
 			);
 			path = ForActivities;
 			sourceTree = "<group>";
@@ -346,6 +350,7 @@
 				9458E9DA279CA3490088B1F5 /* StreamyApp.swift in Sources */,
 				9458EA19279CA4D70088B1F5 /* KnownDeviceViews.swift in Sources */,
 				9458EA31279CA4D70088B1F5 /* ExportIcon.swift in Sources */,
+				94DD016527A5AFD6006B2503 /* PredictView.swift in Sources */,
 				9458EA35279CA4D70088B1F5 /* ScreenTitle.swift in Sources */,
 				9458EA21279CA4D70088B1F5 /* NewSessionView.swift in Sources */,
 				9458EA2D279CA4D70088B1F5 /* Whoops.swift in Sources */,
@@ -373,6 +378,7 @@
 				9458E9DB279CA3490088B1F5 /* StreamyApp.swift in Sources */,
 				9458EA1A279CA4D70088B1F5 /* KnownDeviceViews.swift in Sources */,
 				9458EA32279CA4D70088B1F5 /* ExportIcon.swift in Sources */,
+				94DD016627A5AFD6006B2503 /* PredictView.swift in Sources */,
 				9458EA36279CA4D70088B1F5 /* ScreenTitle.swift in Sources */,
 				9458EA22279CA4D70088B1F5 /* NewSessionView.swift in Sources */,
 				9458EA2E279CA4D70088B1F5 /* Whoops.swift in Sources */,
@@ -570,6 +576,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -601,6 +608,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

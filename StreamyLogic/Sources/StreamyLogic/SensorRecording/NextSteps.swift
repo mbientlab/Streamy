@@ -8,7 +8,7 @@ import Combine
 ///
 public class NextStepsUseCase: ObservableObject {
 
-    @Published public private(set) var cta:   UseCaseCTA       = .connect
+    @Published public private(set) var ctas:  Set<UseCaseCTA>  = [.connect]
     @Published public private(set) var state: UseCaseState     = .ready
     public let deviceName:                    String
 
@@ -53,12 +53,12 @@ private extension NextStepsUseCase {
 
     func handleError(_ completion: Subscribers.Completion<MWError>) {
         guard case .failure = completion else { return }
-        cta = .connect
+        ctas = [.connect]
         state = .ready
     }
 
     func updateCTAState(isLogging: Bool) {
-        cta = isLogging ? .download : .configure
+        ctas = isLogging ? [.download] : [.configure, .predict]
         state = .ready
     }
 }

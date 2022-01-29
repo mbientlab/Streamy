@@ -94,6 +94,14 @@ extension UIFactory {
         return .observe(.init(device, startDate: date))
     }
 
+    func makePredictionObservables(for device: MWKnownDevice)
+    -> Observed<
+        ChooseModelUseCase,
+        ChooseModelVM<ChooseModelUseCase>
+    > {
+        .observe(.init(device, root.coreML))
+    }
+
     private func getLogSessionStartDate(for device: MWKnownDevice) -> Date {
         .now // Fake in this demo app. Yours can persist this across sessions like _MetaBase_.
     }
@@ -201,8 +209,7 @@ VM == NextStepsViewModel<NextStepsUseCase> {
         .init(object: object,
               vm: .init(
                 title: \.deviceName,
-                ctaLabel: \.cta.displayName,
-                cta: \.cta,
+                ctas: { object.ctas.sorted(using: KeyPathComparator(\.displayName)) },
                 enableCTA: \.state.isReady,
                 didTapCTA: object.didTapCTA,
                 onAppear: object.onAppear
@@ -272,6 +279,44 @@ VM == DownloadViewModel<DownloadUseCase> {
                 onAppear: object.onAppear,
                 showSplitAlert: \.confirmSplitting,
                 didChooseToSplit: object.didChooseToSplitCSVColumns(byButtonPresses:)
+              )
+        )
+    }
+}
+
+extension Observed where
+Object == ChooseModelUseCase,
+VM == ChooseModelVM<ChooseModelUseCase> {
+
+    static func observe(_ object: Object) -> Self {
+        .init(object: object,
+              vm: .init(
+                choice: \.choice,
+                choices: \.modelChoices,
+                predictor: \.predictor,
+                isLoading: \.isLoading,
+                error: \.error,
+                onAppear: object.onAppear
+              )
+        )
+    }
+}
+
+extension Observed where
+Object == PredictUseCase,
+VM == PredictViewModel<PredictUseCase> {
+
+    static func observe(_ object: Object) -> Self {
+        .init(object: object,
+              vm: .init(
+                instruction: \.description,
+                outputs: \.supportedOutputs.sortedByLetter,
+                prediction: \.prediction,
+                predictions: \.probabilities,
+                frameRate: \.frameRate,
+                predictionRate: \.predictionRate,
+                error: \.error,
+                onAppear: object.onAppear
               )
         )
     }

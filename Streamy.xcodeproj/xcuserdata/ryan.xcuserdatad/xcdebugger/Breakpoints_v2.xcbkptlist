@@ -7,41 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "27602FAE-A608-4E23-98D9-6D1786E4BE60"
+            uuid = "A50B115D-A6B8-464A-A7F2-D1CB1A714D11"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StreamyLogic/Sources/StreamyLogic/SensorRecording/Export.swift"
+            filePath = "StreamyLogic/Sources/StreamyLogic/StreamingPredictions/CoreML/CoreMLClassifierCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "prepareExport()"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "predict()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2875ED2B-2504-4464-BCCA-C65AA923ADFC"
-            shouldBeEnabled = "Yes"
+            uuid = "4267A2A6-50D8-416F-9246-D21E23D1C25A"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
-            continueAfterRunningActions = "Yes"
-            filePath = "StreamyLogic/Sources/StreamyLogic/CSVConverters.swift"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/ForActivities/ThreeColumnRouter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "convertToCSVs(_:_:)"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C05BCA46-0419-464A-88A6-93993F32C9C5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StreamyLogic/Sources/StreamyLogic/StreamingPredictions/CoreML/BufferCoordinatorForSIMD3or4.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "add(simd:)"
             landmarkType = "7">
-            <Actions>
-               <BreakpointActionProxy
-                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
-                  <ActionContent
-                     consoleCommand = "po dataTables.first.rows.first; po dataTables.last.rows.first; po dataTables.first.rows.last, po dataTables.last.rows.last">
-                  </ActionContent>
-               </BreakpointActionProxy>
-            </Actions>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

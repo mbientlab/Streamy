@@ -3,8 +3,7 @@ import StreamyLogic
 
 struct NextStepsViewModel<O: ObservableObject> {
     let title:     KeyPath<O, String>
-    let ctaLabel:  KeyPath<O, String>
-    let cta:       KeyPath<O, UseCaseCTA>
+    let ctas:      () -> [UseCaseCTA]
     let enableCTA: KeyPath<O, Bool>
     let didTapCTA: () -> Void
     let onAppear:  () -> Void
@@ -28,18 +27,25 @@ struct NextStepsView_StackNavStyle<Object: ObservableObject>: View {
     }
 
     @ViewBuilder private var ctas: some View {
-        if state[keyPath: vm.cta] != .connect {
-
-            NavigationLink(
-                destination: {
-                    Components.Destinations(state, vm)
-                        .environment(\.routedDevice, device)
-                }, label: {
-                    Text(state[keyPath: vm.ctaLabel])
-                }
-            ).buttonStyleCTA()
-
-        } else { Components.CTA(state, vm, action: vm.didTapCTA) }
+        let ctas = vm.ctas()
+        if ctas != [.connect] {
+            ForEach(ctas) { cta in
+                NavigationLink(
+                    destination: {
+                        Components.Destinations(cta: cta)
+                            .environment(\.routedDevice, device)
+                    }, label: { Text(cta.displayName) }
+                ).buttonStyleCTA()
+            }
+        } else {
+            ForEach(ctas) { cta in
+                Components.CTA(
+                    cta: cta,
+                    action: { _ in vm.didTapCTA() },
+                    enable: state[keyPath: vm.enableCTA]
+                )
+            }
+        }
     }
 }
 
@@ -55,7 +61,7 @@ struct NextStepsView_MiddleColumnNavStyle<Object: ObservableObject>: View {
     private let vm: NextStepsViewModel<Object>
     @Environment(\.explicitNavigationTarget) private var target
     @State private var didNavigate = false
-    private var allowNavigation: Bool { state[keyPath: vm.cta] != .connect }
+    private var allowNavigation: Bool { vm.ctas() != [.connect] }
 
     var body: some View {
         Components.BaseView(state, vm, cta: ctas)
@@ -65,24 +71,28 @@ struct NextStepsView_MiddleColumnNavStyle<Object: ObservableObject>: View {
 
     @ViewBuilder private var ctas: some View {
         if !didNavigate {
-            Components.CTA(state, vm, action: interceptCTATapForNavigation)
+            ForEach(vm.ctas()) { cta in
+                Components.CTA(cta: cta,
+                               action: interceptCTATapForNavigation,
+                               enable: state[keyPath: vm.enableCTA])
+            }
         }
     }
 
     /// Explicit navigation for three pane layout
-    private func interceptCTATapForNavigation() {
+    private func interceptCTATapForNavigation(_ cta: UseCaseCTA) {
         vm.didTapCTA()
         guard allowNavigation else { return }
         didNavigate = true
-        target.wrappedValue = state[keyPath: vm.cta]
+        target.wrappedValue = cta
     }
 }
 
 // MARK: - Base Implementation Components
 
-fileprivate struct Components<Object: ObservableObject> {
+fileprivate struct Components {
 
-    struct BaseView<CTAConfiguration: View>: View {
+    struct BaseView<CTAConfiguration: View, Object: ObservableObject>: View {
 
         init(_ o: Object, _ vm: NextStepsViewModel<Object>, cta: CTAConfiguration) {
             (self.state, self.vm) = (o, vm)
@@ -103,7 +113,9 @@ fileprivate struct Components<Object: ObservableObject> {
 
                 Spacer()
 
-                ctaConfiguration
+                VStack(alignment: .center, spacing: .verticalSpacing / 2) {
+                    ctaConfiguration
+                }
             }
             .navigationTitle(state[keyPath: vm.title])
             .frame(maxWidth: .infinity, maxHeight:  .infinity)
@@ -114,38 +126,29 @@ fileprivate struct Components<Object: ObservableObject> {
 
     struct CTA: View {
 
-        init(_ o: Object, _ vm: NextStepsViewModel<Object>, action: @escaping () -> Void) {
-            (self.state, self.vm) = (o, vm)
-            self.action = action
-        }
-        @ObservedObject private var state: Object
-        private let vm: NextStepsViewModel<Object>
-        private let action: () -> Void
+        let cta: UseCaseCTA
+        let action: (UseCaseCTA) -> Void
+        let enable: Bool
 
         var body: some View {
-            Button(state[keyPath: vm.ctaLabel], action: action)
-                .buttonStyleCTA(showSpinner: state[keyPath: vm.cta] == .connect)
-                .disabled(state[keyPath: vm.enableCTA] == false)
-                .allowsHitTesting(state[keyPath: vm.enableCTA])
+            Button(cta.displayName, action: { action(cta) })
+                .buttonStyleCTA(showSpinner: cta == .connect)
+                .disabled(!enable)
+                .allowsHitTesting(enable)
         }
-
     }
 
     struct Destinations: View {
 
-        init(_ o: Object, _ vm: NextStepsViewModel<Object>) {
-            (self.state, self.vm) = (o, vm)
-        }
-        @ObservedObject private var state: Object
-        private let vm: NextStepsViewModel<Object>
+        let cta: UseCaseCTA
 
         var body: some View {
-            switch state[keyPath: vm.cta] {
+            switch cta {
+                case .predict:   Views.Predict()
                 case .configure: Views.NewSession()
                 case .download:  Views.Download()
                 default: WhoopsView()
             }
-
         }
     }
 }

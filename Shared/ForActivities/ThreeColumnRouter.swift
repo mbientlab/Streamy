@@ -10,7 +10,7 @@ import StreamyLogic
 struct ThirdPaneRouter<Pane: View>: View {
 
     @State private var target: UseCaseCTA? = nil
-    @Environment(\.routedDevice) var device
+    @Environment(\.routedDevice) private var device
 
     let middle: Pane
 
@@ -18,6 +18,9 @@ struct ThirdPaneRouter<Pane: View>: View {
         middle
             .background(links.hidden())
             .environment(\.explicitNavigationTarget, $target)
+            .onChange(of: target, perform: {
+                print("->>>>>>> \($0)")
+            })
     }
 
     @ViewBuilder var links: some View {
@@ -34,6 +37,16 @@ struct ThirdPaneRouter<Pane: View>: View {
             isActive: $target.isActive(.download),
             destination: {
                 Views.Download()
+                    .onAppear(perform: { print(#file, ">> Download destination")})
+                    .environment(\.routedDevice, device)
+                    .environment(\.explicitNavigationTarget, $target)
+            }, label: { EmptyView() }
+        )
+
+        NavigationLink(
+            isActive: $target.isActive(.predict),
+            destination: {
+                Views.Predict()
                     .environment(\.routedDevice, device)
                     .environment(\.explicitNavigationTarget, $target)
             }, label: { EmptyView() }

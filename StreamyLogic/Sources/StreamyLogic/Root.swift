@@ -14,6 +14,8 @@ public class Root: ObservableObject {
     /// Finds nearby MetaWears using CoreBluetooth
     public let scanner: MetaWearScanner
 
+    public let coreML: CoreMLModelVendor
+
     private let localDefaults: UserDefaults
     private let cloudDefaults: NSUbiquitousKeyValueStore
     private let devicesLoader:  MWLoader<MWKnownDevicesLoadable>
@@ -28,6 +30,7 @@ public class Root: ObservableObject {
         self.scanner       = MetaWearScanner.sharedRestore
         self.devicesLoader = MetaWeariCloudSyncLoader(localDefaults, cloudDefaults)
         self.syncedDevices = MetaWearSyncStore(scanner: scanner, loader: devicesLoader)
+        self.coreML = LocalBundleCoreMLModelVendor(sensors: [.sensorFusion])
     }
 
     /// Loads MetaWearMetadata (i.e., identities of known devices across a user's machines) into memory from persistent stores. Be sure to ask the MetaWearScanner to start scanning. This populates the actual peripherals for those MetaWears into this app session.

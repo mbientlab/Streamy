@@ -17,12 +17,20 @@ struct NoSplitConverter: CSVConverter {
     }
 }
 
+extension MWMechanicalButton.State {
+    var opposite: Self { self == .up ? .down : .up }
+}
+
 struct ButtonPressSplitConverter: CSVConverter {
 
     var requireButtonPresses: Bool
+    let startSignal: MWMechanicalButton.State
+    let endSignal: MWMechanicalButton.State
 
-    init(requireButtonPresses: Bool = true) {
+    init(requireButtonPresses: Bool = true, startOn: MWMechanicalButton.State = .up) {
         self.requireButtonPresses = requireButtonPresses
+        self.startSignal = startOn
+        self.endSignal = startOn.opposite
     }
 }
 
@@ -97,16 +105,16 @@ extension ButtonPressSplitConverter {
                   let state = MWMechanicalButton.State(rawValue: last.lowercased())
             else { continue }
 
-            /// If without start date, find next up event
+            /// If without start date, find next "start" event
             guard let lower = start else {
-                if state == .up {
+                if state == startSignal {
                     start = epoch(of: row)
                 }
                 continue
             }
 
-            /// If without end date, find next down event
-            guard state == .down, end == nil else { continue }
+            /// If without end date, find next "end" event
+            guard state == endSignal, end == nil else { continue }
             end = epoch(of: row)
 
             /// If have start and end date, assign a range and start over

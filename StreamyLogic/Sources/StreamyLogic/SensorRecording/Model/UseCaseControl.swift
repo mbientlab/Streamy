@@ -4,12 +4,13 @@ import MetaWear
 
 /// Represents the offered case to the user.
 ///
-public enum UseCaseCTA: String {
-    case connect, configure, log, download, export
+public enum UseCaseCTA: String, IdentifiableByRawValue {
+    case connect, configure, log, download, export, predict
 
     public var displayName: String {
         switch self {
-            case .configure: return "New Session"
+            case .predict:   return "Predict"
+            case .configure: return "Log"
             case .log:       return "Start Logging"
             case .download:  return "Download Data"
             case .export:    return "Export"

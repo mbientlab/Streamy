@@ -55,9 +55,24 @@ extension Views {
         @EnvironmentObject private var factory: UIFactory
 
         var body: some View {
+            ZStack {
+                Color.blue
+                if let mac = routedDevice,
+                   let device = factory.getKnownDevice(mac: mac) {
+                    DownloadView(factory.makeDownloadObservables(for: device))
+                } else { WhoopsView(message: Views.failNoDevice) }
+            }
+        }
+    }
+
+    struct Predict: View {
+        @Environment(\.routedDevice) var routedDevice
+        @EnvironmentObject private var factory: UIFactory
+
+        var body: some View {
             if let mac = routedDevice,
                let device = factory.getKnownDevice(mac: mac) {
-                DownloadView(factory.makeDownloadObservables(for: device))
+                PredictView(factory.makePredictionObservables(for: device))
             } else { WhoopsView(message: Views.failNoDevice) }
         }
     }

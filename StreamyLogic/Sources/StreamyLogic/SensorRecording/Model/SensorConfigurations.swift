@@ -10,6 +10,7 @@ internal struct SensorConfigurations {
     var linearAcc:     MWSensorFusion.LinearAcceleration? = nil
     var quaternion:    MWSensorFusion.Quaternion? = nil
     var button:        MWMechanicalButton? = nil
+    var pressure:      MWBarometer.MWPressure? = nil
 
     /// Input a valid selection of signals (some are mutually exclusive).
     ///
@@ -18,19 +19,23 @@ internal struct SensorConfigurations {
             button = .init()
         }
 
+        if selections.contains(.pressure) {
+            pressure = MWBarometer.MWPressure(standby: .ms0_5, iir: .off, oversampling: .standard)
+        }
+
         if selections.contains(.linearAcceleration) {
-            linearAcc  = .init(mode: .imuplus)
+            linearAcc  = .init(mode: .ndof)
             return
         } else if selections.contains(.quaternion) {
-            quaternion = .init(mode: .imuplus)
+            quaternion = .init(mode: .ndof)
             return
         }
 
         if selections.contains(.acceleration) {
-            accelerometer = .init(rate: .hz100, gravity: .g16)
+            accelerometer = .init(rate: .hz50, gravity: .g16)
         }
         if selections.contains(.gyroscope) {
-            gyroscope = .init(rate: .hz100, range: .dps2000)
+            gyroscope = .init(rate: .hz50, range: .dps2000)
         }
     }
 }
