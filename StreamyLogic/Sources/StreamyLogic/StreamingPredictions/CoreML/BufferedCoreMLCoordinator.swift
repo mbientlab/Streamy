@@ -30,7 +30,7 @@ class BufferedCoreMLCoordinator: CoreMLClassifierCoordinator {
         // Internal description of model features
         guard let shape = model.getShape() else { throw CoreMLError.unexpectedModelParameters }
         self.predictionWindowWidth = Int(shape.predictionWindow)
-        self.slidingWindowOffset   = 20
+        self.slidingWindowOffset   = 10
         self.slidingWindows        = (predictionWindowWidth / slidingWindowOffset)
         let bufferWidth            = predictionWindowWidth + (slidingWindows - 1) * slidingWindowOffset
         self.bufferWidth           = bufferWidth

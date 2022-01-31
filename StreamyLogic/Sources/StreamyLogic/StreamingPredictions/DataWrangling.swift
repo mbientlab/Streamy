@@ -4,7 +4,7 @@ import simd
 import AppKit
 #endif
 
-// MARK: - Utilities
+// MARK: - Utilities Menu on macOS
 
 public struct QuaternionDeltaCalculator {
 
