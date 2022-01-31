@@ -4,7 +4,7 @@ import CoreML
 import MetaWearSync
 import MetaWearCpp
 import Combine
-
+import simd
 
 
 public class PredictUseCase: ObservableObject {
@@ -70,6 +70,12 @@ public class PredictUseCase: ObservableObject {
 //            .stream(.accelerometer(rate: .hz100, gravity: .g16))
             .stream(.sensorFusionQuaternion(mode: .ndof))
             .map(\.value)
+            .map(simd_quatf.init(vector:))
+            .scan(simd_quatf(), { prior, current in
+                if prior == simd_quatf() { return current }
+                else { return current * prior.inverse }
+            })
+            .map(\.vector)
             .share()
             .eraseToAnyPublisher()
     }

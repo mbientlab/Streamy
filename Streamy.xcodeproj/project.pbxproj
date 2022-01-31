@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9436824327A7CAC800E50F7C /* DataWranglingMacMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9436824227A7CAC800E50F7C /* DataWranglingMacMenu.swift */; };
+		9436824427A7CAC800E50F7C /* DataWranglingMacMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9436824227A7CAC800E50F7C /* DataWranglingMacMenu.swift */; };
 		9458E9DA279CA3490088B1F5 /* StreamyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9CA279CA3480088B1F5 /* StreamyApp.swift */; };
 		9458E9DB279CA3490088B1F5 /* StreamyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9458E9CA279CA3480088B1F5 /* StreamyApp.swift */; };
 		9458E9DE279CA3490088B1F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9458E9CC279CA3490088B1F5 /* Assets.xcassets */; };
@@ -64,6 +66,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9436824227A7CAC800E50F7C /* DataWranglingMacMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataWranglingMacMenu.swift; sourceTree = "<group>"; };
 		9458E9CA279CA3480088B1F5 /* StreamyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamyApp.swift; sourceTree = "<group>"; };
 		9458E9CC279CA3490088B1F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9458E9D1279CA3490088B1F5 /* Streamy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +209,7 @@
 				9458EA0E279CA4D70088B1F5 /* ExportIcon.swift */,
 				9458EA10279CA4D70088B1F5 /* ScreenTitle.swift */,
 				9458EA0C279CA4D70088B1F5 /* Whoops.swift */,
+				9436824227A7CAC800E50F7C /* DataWranglingMacMenu.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -341,6 +345,7 @@
 				9458EA13279CA4D70088B1F5 /* DeviceListSidebar.swift in Sources */,
 				9458EA39279CA4D70088B1F5 /* Views.swift in Sources */,
 				9458EA33279CA4D70088B1F5 /* BluetoothStateToolbar.swift in Sources */,
+				9436824327A7CAC800E50F7C /* DataWranglingMacMenu.swift in Sources */,
 				9458EA17279CA4D70088B1F5 /* DeviceListCell.swift in Sources */,
 				9458E9F3279CA4540088B1F5 /* MainScene.swift in Sources */,
 				9458EA29279CA4D70088B1F5 /* Binding+.swift in Sources */,
@@ -369,6 +374,7 @@
 				9458EA14279CA4D70088B1F5 /* DeviceListSidebar.swift in Sources */,
 				9458EA3A279CA4D70088B1F5 /* Views.swift in Sources */,
 				9458EA34279CA4D70088B1F5 /* BluetoothStateToolbar.swift in Sources */,
+				9436824427A7CAC800E50F7C /* DataWranglingMacMenu.swift in Sources */,
 				9458EA18279CA4D70088B1F5 /* DeviceListCell.swift in Sources */,
 				9458E9F4279CA4540088B1F5 /* MainScene.swift in Sources */,
 				9458EA2A279CA4D70088B1F5 /* Binding+.swift in Sources */,

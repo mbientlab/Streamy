@@ -66,73 +66,19 @@ struct MainWindowScene: Scene {
             }
             .navigationViewStyle(.automatic)
             .frame(minWidth: 650, minHeight: 300)
-            .toolbar {
-                BluetoothStateToolbar()
-                ToolbarItemGroup(placement: .navigation) {
-                    DownsampleButton()
-                }
-
-            }
+            .toolbar { BluetoothStateToolbar() }
             .environmentObject(factory)
         }
         .commands {
             SidebarCommands()
             CommandGroup(replacing: .help) { }
             CommandGroup(replacing: .newItem) { }
-        }
-    }
-}
-
-#endif
-
-struct DownsampleButton: View {
-
-    @State private var showPicker = false
-    var body: some View {
-        Button("Downsample") { showPicker = true }
-        .fileImporter(isPresented: $showPicker, allowedContentTypes: [.folder], allowsMultipleSelection: true) { result in
-            guard case let .success(urls) = result else { return }
-            DispatchQueue.global().async {
-                Downsampler.downsample(folders: urls)
+            CommandMenu("Data Wrangling") {
+                DownsampleButton()
+                ComputeDifferenceButton()
             }
         }
     }
 }
 
-struct Downsampler {
-
-    static func downsample(folders: [URL], divisibleBy offset: Int = 2) {
-        let fm = FileManager.default
-
-        for folder in folders {
-            let csvs = try? fm
-                .contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)
-                .filter { $0.pathExtension == "csv" }
-
-            downsample(csvs: csvs ?? [])
-        }
-
-        DispatchQueue.main.async {
-            NSWorkspace.shared.activateFileViewerSelecting(folders)
-        }
-    }
-
-    static func downsample(csvs: [URL], divisibleBy offset: Int = 2) {
-        let fm = FileManager.default
-        for csvURL in csvs {
-            guard let data = fm.contents(atPath: csvURL.path),
-                  let csv = String(data: data, encoding: .utf8)?.components(separatedBy: .newlines)
-            else { continue }
-
-            let downsampled = csv
-                .enumerated()
-                .reduce(into: "") { newCSV, line in
-                    if line.offset == 0 { newCSV += "\(line.element)\n"; return }
-                    guard line.offset % 2 == 0 else { return }
-                    newCSV += "\(line.element)\n"
-                }
-
-            try? downsampled.data(using: .utf8)?.write(to: csvURL, options: .atomic)
-        }
-    }
-}
+#endif
