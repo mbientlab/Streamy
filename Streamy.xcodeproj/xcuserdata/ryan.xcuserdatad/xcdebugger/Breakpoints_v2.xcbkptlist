@@ -23,17 +23,27 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4267A2A6-50D8-416F-9246-D21E23D1C25A"
-            shouldBeEnabled = "No"
+            uuid = "42152B42-3F37-43A0-B0C5-9323622F17C8"
+            shouldBeEnabled = "Yes"
+            nameForDebugger = "TrackDownloadUseCaseAppearance"
             ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared/ForActivities/ThreeColumnRouter.swift"
+            continueAfterRunningActions = "Yes"
+            filePath = "StreamyLogic/Sources/StreamyLogic/SensorLogging/Download.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "body"
-            landmarkType = "24">
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "onAppear()"
+            landmarkType = "7">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.Log">
+                  <ActionContent
+                     message = "&quot;Download appeared&quot;"
+                     conveyanceType = "0">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

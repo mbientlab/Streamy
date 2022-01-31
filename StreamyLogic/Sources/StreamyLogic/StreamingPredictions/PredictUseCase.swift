@@ -6,20 +6,18 @@ import MetaWearCpp
 import Combine
 import simd
 
-
 public class PredictUseCase: ObservableObject {
-//    internal typealias StreamType = AnyPublisher<MWAccelerometer.DataType,MWError>
-    internal typealias StreamType = AnyPublisher<MWSensorFusion.Quaternion.DataType,MWError>
 
-    @Published public var prediction:     String            = ""
-    @Published public var probabilities: [(String, Double)] = []
-    @Published public var supportedOutputs:  [String]       = []
-    @Published public var description:               String = ""
+    @Published public var prediction:        String             = ""
+    @Published public var probabilities:     [(String, Double)] = []
+    @Published public var supportedOutputs:  [String]           = []
+    @Published public var description:       String             = ""
 
     @Published public private(set) var predictionRate: String       = "—"
     @Published public private(set) var frameRate:      String       = "—"
     @Published public var error:                       CoreMLError? = nil
 
+    private var stream:        SensorStreamForCoreML
     private var predictor:     CoreMLClassifierCoordinator? = nil
     private let queue:         DispatchQueue
     private weak var metawear: MetaWear?
@@ -31,23 +29,36 @@ public class PredictUseCase: ObservableObject {
     private var restartSub:        AnyCancellable? = nil
     private var predictionSubs:    Set<AnyCancellable> = []
 
-    init(knownDevice: MWKnownDevice, queue: DispatchQueue) {
+    init(knownDevice: MWKnownDevice, queue: DispatchQueue, stream: SensorStreamForCoreML) {
         self.queue = queue
         self.metawear = knownDevice.mw
+        self.stream = stream
     }
 
-    func setPredictor(_ predictor: CoreMLClassifierCoordinator) {
+    func setPredictor(_ predictor: CoreMLClassifierCoordinator, _ sensorStream: SensorStreamForCoreML) {
+
+        if sensorStream != self.stream {
+            self.stream = sensorStream
+            streamSub = nil
+            frameRateSub = nil
+            guard let stream = sensorStream.streamPublisher(for: metawear) else { return }
+            populateMLPredictor(with: stream)
+            reportFrameRate(of: stream)
+        }
+
         predictionSubs = []
         self.predictor = predictor
+
         DispatchQueue.main.async {
             self.description = predictor.description
             self.supportedOutputs = predictor.possibleClassifications
         }
+
         reportPredictions()
     }
 
     public func onAppear() {
-        guard let stream = buildStreamPublisher(), !didSetup else { return }
+        guard let stream = stream.streamPublisher(for: metawear), !didSetup else { return }
         self.didSetup = true
         populateMLPredictor(with: stream)
         reportFrameRate(of: stream)
@@ -62,28 +73,11 @@ public class PredictUseCase: ObservableObject {
         reconnectSub = metawear?.publishWhenDisconnected()
             .sink(receiveValue: { mw in mw.connect() })
     }
-
-    internal func buildStreamPublisher() -> StreamType? {
-        metawear?
-            .publishWhenConnected()
-            .first()
-//            .stream(.accelerometer(rate: .hz100, gravity: .g16))
-            .stream(.sensorFusionQuaternion(mode: .ndof))
-            .map(\.value)
-            .map(simd_quatf.init(vector:))
-            .scan(simd_quatf(), { prior, current in
-                if prior == simd_quatf() { return current }
-                else { return current * prior.inverse }
-            })
-            .map(\.vector)
-            .share()
-            .eraseToAnyPublisher()
-    }
 }
 
 private extension PredictUseCase {
 
-    func populateMLPredictor(with stream: StreamType) {
+    func populateMLPredictor(with stream: AnyPublisher<[Float],MWError>) {
         streamSub = stream
             .sink(receiveCompletion: { [weak self] completion in
                 guard case let .failure(error) = completion else { return }
@@ -95,9 +89,8 @@ private extension PredictUseCase {
         metawear?.connect()
     }
 
-    func reportFrameRate(of stream: StreamType) {
+    func reportFrameRate(of stream: AnyPublisher<[Float],MWError>) {
         frameRateSub = stream
-            .map { _ in () }
             .receive(on: DispatchQueue.main)
             .collect(.byTime(DispatchQueue.main, 1))
             .map { $0.endIndex }
@@ -127,7 +120,6 @@ private extension PredictUseCase {
             .store(in: &predictionSubs)
 
         predictor?.probabilities
-            .map { _ in () }
             .receive(on: queue)
             .collect(.byTime(queue, 1))
             .map { $0.endIndex }
@@ -139,4 +131,8 @@ private extension PredictUseCase {
     }
 
 
+}
+
+extension SIMD {
+    var linearArray: [Self.Scalar] { self.indices.map { self[$0] } }
 }

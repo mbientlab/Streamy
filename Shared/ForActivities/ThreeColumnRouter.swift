@@ -19,7 +19,7 @@ struct ThirdPaneRouter<Pane: View>: View {
             .background(links.hidden())
             .environment(\.explicitNavigationTarget, $target)
             .onChange(of: target, perform: {
-                print("->>>>>>> \($0)")
+                print("\(Self.self) \($0.debugDescription ?? "None")")
             })
     }
 
@@ -37,7 +37,6 @@ struct ThirdPaneRouter<Pane: View>: View {
             isActive: $target.isActive(.download),
             destination: {
                 Views.Download()
-                    .onAppear(perform: { print(#file, ">> Download destination")})
                     .environment(\.routedDevice, device)
                     .environment(\.explicitNavigationTarget, $target)
             }, label: { EmptyView() }

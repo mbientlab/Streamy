@@ -7,7 +7,7 @@ import Combine
 /// **Thread Safety** Use and create a CoreML model only on one background queue.
 ///
 protocol CoreMLClassifierCoordinator {
-    func add(datum: Any)
+    func add(datum: [Float])
     func resetData()
 
     var prediction:    CurrentValueSubject<String, Never>           { get }

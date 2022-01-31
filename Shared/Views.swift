@@ -56,7 +56,6 @@ extension Views {
 
         var body: some View {
             ZStack {
-                Color.blue
                 if let mac = routedDevice,
                    let device = factory.getKnownDevice(mac: mac) {
                     DownloadView(factory.makeDownloadObservables(for: device))

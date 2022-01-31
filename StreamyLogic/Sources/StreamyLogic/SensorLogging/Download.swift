@@ -31,7 +31,6 @@ public class DownloadUseCase: ObservableObject {
 public extension DownloadUseCase {
 
     func onAppear() {
-        print(">>", #file, #function)
         guard state == .notReady, let metawear = metawear else { return }
         actionSub = SDKAction
             .downloadLogs(

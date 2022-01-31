@@ -1,13 +1,16 @@
 import SwiftUI
 import StreamyLogic
 
-struct ChooseModelVM<O: ObservableObject> {
-    let choice:    ReferenceWritableKeyPath<O, String>
-    let choices:   KeyPath<O, [String]>
-    let predictor: KeyPath<O, PredictUseCase>
-    let isLoading: KeyPath<O, Bool>
-    let error:     ReferenceWritableKeyPath<O, CoreMLError?>
-    let onAppear:  () -> Void
+struct ChooseModelVM<O: ObservableObject, Sensor: MenuOption> {
+    let sensorChoice:   ReferenceWritableKeyPath<O, Sensor>
+    let modelChoice:    ReferenceWritableKeyPath<O, String>
+    let modelChoices:   KeyPath<O, [String]>
+    let sensorChoices:  KeyPath<O, [Sensor]>
+    let predictor:      KeyPath<O, PredictUseCase>
+    let isLoading:      KeyPath<O, Bool>
+    let error:          ReferenceWritableKeyPath<O, CoreMLError?>
+    let onAppear:       () -> Void
+    let loadModel:      () -> Void
 }
 
 struct PredictViewModel<O: ObservableObject> {
@@ -24,26 +27,26 @@ struct PredictViewModel<O: ObservableObject> {
 
 // MARK: - Choices
 
-struct PredictView<Object: ObservableObject>: View {
+struct PredictView<Object: ObservableObject, Sensor: MenuOption>: View {
 
-    init(_ observable: Observed<Object, ChooseModelVM<Object>>) {
+    init(_ observable: Observed<Object, ChooseModelVM<Object, Sensor>>) {
         _state = .init(wrappedValue: observable.object)
         self.vm = observable.vm
     }
 
     @StateObject private var state: Object
-    private let vm: ChooseModelVM<Object>
+    private let vm: ChooseModelVM<Object, Sensor>
 
     var body: some View {
         VStack(alignment: .leading, spacing: .verticalSpacing / 2) {
-            menu
+            setup
             Divider()
             CoreMLClassifierModelOutputView(.observe(state[keyPath: vm.predictor]))
         }
         .screenPadding()
         .navigationTitle("Predict")
         .onAppear(perform: vm.onAppear)
-        .animation(.easeOut, value: state[keyPath: vm.choice])
+        .animation(.easeOut, value: state[keyPath: vm.modelChoice])
         .alert(
             isPresented: $state[dynamicMember: vm.error].isPresented(),
             error: state[keyPath: vm.error],
@@ -51,19 +54,64 @@ struct PredictView<Object: ObservableObject>: View {
         )
     }
 
-    private var menu: some View {
+    @ViewBuilder private var setup: some View {
         HStack {
+            MenuOptionPicker(
+                state: state,
+                choice: vm.sensorChoice,
+                choices: vm.sensorChoices,
+                label: "Sensor Stream"
+            ).fixedSize()
             Spacer()
-            if state[keyPath: vm.isLoading] {
-                CircularBusyIndicator()
-            }
-            Picker("Choose Model", selection: $state[dynamicMember: vm.choice]) {
-                ForEach(state[keyPath: vm.choices], id: \.self) { choice in
+            tips
+        }
+
+        HStack(spacing: 20) {
+
+            Picker("CoreML Model", selection: $state[dynamicMember: vm.modelChoice]) {
+                ForEach(state[keyPath: vm.modelChoices], id: \.self) { choice in
                     Text(choice).id(choice)
                 }
             }
+            .pickerStyle(.menu)
+            .fixedSize()
+
+            Spacer()
+
+            CircularBusyIndicator()
+                .opacity(state[keyPath: vm.isLoading] ? 1 : 0)
+                .animation(.easeOut, value: state[keyPath: vm.isLoading])
+
+            Button("Start", action: vm.loadModel)
+                .keyboardShortcut(.defaultAction)
         }
-        .animation(.easeOut, value: state[keyPath: vm.isLoading])
+    }
+
+    @State private var showTips = false
+    private var tips: some View {
+        Text("Tips")
+            .popover(isPresented: $showTips) {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
+                        Text("Tips").font(.title2)
+
+                        Text("Releasing the button resets model state to zero.")
+                            .leftAlignWrap()
+                        Text("Add your CoreML models to the `StreamyLogic` package.")
+                            .leftAlignWrap()
+                        Text("Sensors you stream must map into `Array<Float>` whose order matches your CoreML Model's training input. See `SensorStreamForCoreML.swift`.")
+                            .leftAlignWrap()
+                        Text("Actual and modeled data rate (e.g., 50 vs 100 hz) should be similar.")
+                            .leftAlignWrap()
+                        Text("On macOS, Streamy has a Data Wrangling menu to quickly process CSVs.")
+                            .leftAlignWrap()
+                    }
+                }
+                .padding()
+                .frame(maxWidth: 250, maxHeight: 350, alignment: .top)
+                .fixedSize()
+            }
+            .onHover { _ in showTips = true }
     }
 }
 
@@ -164,5 +212,15 @@ struct PredictionDetail: View {
                 .animation(.easeOut(duration: 0.1), value: rating)
         }
         .foregroundColor(.secondary)
+    }
+}
+
+extension View {
+
+    func leftAlignWrap() -> some View {
+        self
+            .lineLimit(nil)
+            .fixedSize(horizontal: false, vertical: true)
+            .multilineTextAlignment(.leading)
     }
 }

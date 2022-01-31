@@ -115,11 +115,12 @@ struct MenuOptionPicker<Option: MenuOption, State: ObservableObject>: View {
     @ObservedObject var state: State
     let choice:  ReferenceWritableKeyPath<State, Option>?
     let choices: KeyPath<State, [Option]>?
+    var label: String = "Options"
 
     var body: some View {
         if let path = choice, let options = choices {
 
-            Picker("Options", selection: $state[dynamicMember: path]) {
+            Picker(label, selection: $state[dynamicMember: path]) {
                 ForEach(state[keyPath: options]) { option in
                     Text(option.rawValue).tag(option)
                 }

@@ -96,8 +96,8 @@ extension UIFactory {
 
     func makePredictionObservables(for device: MWKnownDevice)
     -> Observed<
-        ChooseModelUseCase,
-        ChooseModelVM<ChooseModelUseCase>
+        CoreMLSetupUseCase,
+        ChooseModelVM<CoreMLSetupUseCase, SensorStreamForCoreML>
     > {
         .observe(.init(device, root.coreML))
     }
@@ -285,18 +285,21 @@ VM == DownloadViewModel<DownloadUseCase> {
 }
 
 extension Observed where
-Object == ChooseModelUseCase,
-VM == ChooseModelVM<ChooseModelUseCase> {
+Object == CoreMLSetupUseCase,
+VM == ChooseModelVM<CoreMLSetupUseCase, SensorStreamForCoreML> {
 
     static func observe(_ object: Object) -> Self {
         .init(object: object,
               vm: .init(
-                choice: \.choice,
-                choices: \.modelChoices,
+                sensorChoice: \.sensor,
+                modelChoice: \.model,
+                modelChoices: \.modelChoices,
+                sensorChoices: \.sensorChoices,
                 predictor: \.predictor,
                 isLoading: \.isLoading,
                 error: \.error,
-                onAppear: object.onAppear
+                onAppear: object.onAppear,
+                loadModel: object.startModel
               )
         )
     }

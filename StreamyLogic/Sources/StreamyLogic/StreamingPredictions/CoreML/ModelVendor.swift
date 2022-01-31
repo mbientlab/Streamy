@@ -50,6 +50,7 @@ extension LocalBundleCoreMLModelVendor: CoreMLModelVendor {
             .receive(on: queue)
             .tryMap { url -> URL in
                 guard FileManager.default.isReadableFile(atPath: url.path) else {
+                    try FileManager.default.createDirectory(at: url.deletingPathExtension().deletingLastPathComponent(), withIntermediateDirectories: true)
                     let newCompilationURL = try MLModel.compileModel(at: resourceURL(for: name))
                     _ = try FileManager.default.replaceItemAt(url, withItemAt: newCompilationURL)
                     return url

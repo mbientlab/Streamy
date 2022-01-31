@@ -15,8 +15,10 @@ extension MLModel {
         return (Int(lstmStateSize), Int(predictionWindow), inputs)
     }
 
-    func featureNames() -> (input: Set<String>, output: Set<String>) {
-        (Set(modelDescription.inputDescriptionsByName.keys),
-         Set(modelDescription.outputDescriptionsByName.keys))
+    func featureNames() -> (input: Set<String>, output: Set<String>, inputVectorKeys: [String]) {
+        let input = Set(modelDescription.inputDescriptionsByName.keys)
+        let output = Set(modelDescription.outputDescriptionsByName.keys)
+        let inputVector = (modelDescription.metadata[.creatorDefinedKey] as? [String: String])?["features"]?.components(separatedBy: ",") ?? []
+        return (input,output,inputVector)
     }
 }
