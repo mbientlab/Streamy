@@ -10,7 +10,7 @@ public class NewSessionUseCase: ObservableObject {
 
     @Published public private(set) var sensors:  Set<MWNamedSignal> = []
     public let sensorChoices:                    [MWNamedSignal] = [
-        .acceleration, .gyroscope, .linearAcceleration, .quaternion
+        .acceleration, .gyroscope, .magnetometer, .linearAcceleration, .quaternion
     ]
     public private(set) var startDate:           Date
 

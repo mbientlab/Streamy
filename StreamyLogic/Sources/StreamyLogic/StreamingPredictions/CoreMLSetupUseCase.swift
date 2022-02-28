@@ -26,7 +26,7 @@ public class CoreMLSetupUseCase: ObservableObject {
         let queue = DispatchQueue(label: Bundle.main.bundleIdentifier! + ".\(Self.self)")
         queue.markAsCoreMLQueue()
         self.queue = queue
-        let sensor = SensorStreamForCoreML.quaternionDeltas
+        let sensor = SensorStreamForCoreML.accelerometerGyroscope50hz
         self.sensor = sensor
         self.predictor = PredictUseCase(knownDevice: knownDevice, queue: queue, stream: sensor)
     }

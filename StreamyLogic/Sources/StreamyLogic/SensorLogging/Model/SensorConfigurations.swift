@@ -7,6 +7,7 @@ import MetaWear
 internal struct SensorConfigurations {
     var accelerometer: MWAccelerometer? = nil
     var gyroscope:     MWGyroscope?     = nil
+    var magnetometer:  MWMagnetometer?  = nil
     var linearAcc:     MWSensorFusion.LinearAcceleration? = nil
     var quaternion:    MWSensorFusion.Quaternion? = nil
     var button:        MWMechanicalButton? = nil
@@ -36,6 +37,9 @@ internal struct SensorConfigurations {
         }
         if selections.contains(.gyroscope) {
             gyroscope = .init(rate: .hz50, range: .dps2000)
+        }
+        if selections.contains(.magnetometer) {
+            magnetometer = .init(freq: .hz25)
         }
     }
 }

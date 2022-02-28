@@ -18,6 +18,7 @@ struct PredictViewModel<O: ObservableObject> {
     let outputs:     KeyPath<O, [String]>
     let prediction:  KeyPath<O, String>
     let predictions: KeyPath<O, [(String, Double)]>
+    let windowWidth: KeyPath<O, String>
 
     let frameRate:      KeyPath<O, String>
     let predictionRate: KeyPath<O, String>
@@ -177,6 +178,13 @@ struct CoreMLClassifierModelOutputView<Object: ObservableObject>: View {
 
             Text(state[keyPath: vm.outputs].joined(separator: ""))
                 .font(.caption.bold())
+
+            Text("Window")
+                .foregroundColor(.secondary)
+                .font(.caption)
+
+            Text(state[keyPath: vm.windowWidth])
+                .font(.caption.bold())
         }
     }
 
@@ -184,6 +192,7 @@ struct CoreMLClassifierModelOutputView<Object: ObservableObject>: View {
         HStack {
             Text("Streaming").foregroundColor(.secondary)
             Text(state[keyPath: vm.frameRate]).bold()
+            Text("hz").foregroundColor(.secondary)
         }.font(.caption)
     }
 
@@ -191,6 +200,7 @@ struct CoreMLClassifierModelOutputView<Object: ObservableObject>: View {
         HStack {
             Text("Predictions").foregroundColor(.secondary)
             Text(state[keyPath: vm.predictionRate]).bold()
+            Text("hz").foregroundColor(.secondary)
         }.font(.caption)
     }
 }

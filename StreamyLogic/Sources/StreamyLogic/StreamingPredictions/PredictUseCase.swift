@@ -12,6 +12,10 @@ public class PredictUseCase: ObservableObject {
     @Published public var probabilities:     [(String, Double)] = []
     @Published public var supportedOutputs:  [String]           = []
     @Published public var description:       String             = ""
+    public var windowWidth: String {
+        guard let width = predictor?.predictionWindowWidth else { return "" }
+        return String(width)
+    }
 
     @Published public private(set) var predictionRate: String       = "—"
     @Published public private(set) var frameRate:      String       = "—"

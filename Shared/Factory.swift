@@ -316,6 +316,7 @@ VM == PredictViewModel<PredictUseCase> {
                 outputs: \.supportedOutputs.sortedByLetter,
                 prediction: \.prediction,
                 predictions: \.probabilities,
+                windowWidth: \.windowWidth,
                 frameRate: \.frameRate,
                 predictionRate: \.predictionRate,
                 error: \.error,
